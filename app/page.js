@@ -1,13 +1,13 @@
 // app/page.js
 
-import AayushAdvantageSection from '@/components/aayushAdvantageSection';
-import AboutSection from '@/components/aboutSection';
-import ExpertTeamSection from '@/components/expertTeamSection';
-import Footer from '@/components/footer';
-import GetInTouchSection from '@/components/getInTouchSection';
-import Hero from '@/components/Hero';
-import SpecializationsSection from '@/components/specializationSection';
-import TestimonialsAndCTA from '@/components/testimonialsAndCta';
+import AayushAdvantageSection from '@/components/home/aayushAdvantageSection';
+import AboutSection from '@/components/home/aboutSection';
+import ExpertTeamSection from '@/components/home/expertTeamSection';
+import Footer from '@/components/home/footer';
+import GetInTouchSection from '@/components/home/getInTouchSection';
+import Hero from '@/components/home/Hero';
+import SpecializationsSection from '@/components/home/specializationSection';
+import TestimonialsAndCTA from '@/components/home/testimonialsAndCta';
 export default function Home() {
   return (
     <main className="min-h-screen">
