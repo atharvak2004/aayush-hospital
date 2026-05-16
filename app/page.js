@@ -2,8 +2,8 @@
 
 import AayushAdvantageSection from '@/components/home/aayushAdvantageSection';
 import AboutSection from '@/components/home/aboutSection';
+import CTASection from '@/components/home/CTASection';
 import ExpertTeamSection from '@/components/home/expertTeamSection';
-import Footer from '@/components/home/footer';
 import GetInTouchSection from '@/components/home/getInTouchSection';
 import Hero from '@/components/home/Hero';
 import SpecializationsSection from '@/components/home/specializationSection';
@@ -17,8 +17,8 @@ export default function Home() {
         <ExpertTeamSection />
         <AayushAdvantageSection />
         <TestimonialsAndCTA />
+        <CTASection />
         <GetInTouchSection />
-        <Footer />
     </main>
   );
 }

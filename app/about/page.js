@@ -1,9 +1,15 @@
-// app/about/page.js
+import AboutHeroSection from "@/components/about/AboutHeroSection";
+import CorePrinciplesSection from "@/components/about/CorePrinciplesSection";
+import LeadershipTeamSection from "@/components/about/LeadershipTeamSection";
+import MissionVisionSection from "@/components/about/MissionVisionSection";
+
 export default function About() {
   return (
-    <div className="max-w-7xl mx-auto px-4 py-12">
-      <h1 className="text-3xl font-bold text-gray-900">About Us</h1>
-      <p className="mt-4 text-gray-600">Learn more about Aayush Hospital...</p>
-    </div>
+    <main className="min-h-screen">
+      <AboutHeroSection />
+      <MissionVisionSection />
+      <LeadershipTeamSection />
+      <CorePrinciplesSection />
+    </main>
   );
 }

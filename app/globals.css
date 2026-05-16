@@ -15,7 +15,8 @@
   --background: #F5F5F0;
   --foreground: #2C2C2C;
   --card-bg: #FFFFFF;
-
+  --eyebrow: #412D00;
+  
   --font-playfair: 'Playfair Display', serif;
   --font-manrope: 'Manrope', sans-serif;
 }
@@ -28,6 +29,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: 'Manrope', sans-serif;
+  touch-action: manipulation;
 }
 
 h1,
@@ -55,4 +57,25 @@ h6 {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--brown-deep);
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
