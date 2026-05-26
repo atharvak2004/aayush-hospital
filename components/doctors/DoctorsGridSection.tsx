@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 
 const doctors = [
-   {
+  {
     name: "Dr. Umesh Jaiswal",
     role: "M.S. General Surgery",
     category: "General Surgery",
@@ -45,11 +45,11 @@ export default function DoctorsGridSection() {
   const filteredDoctors = doctors.filter((doctor) => {
     const matchesCategory =
       active === "All Departments" ||
-      doctor.category === active;
+      doctor?.category === active;
 
-    const matchesSearch = doctor.name
-      .toLowerCase()
-      .includes(search.toLowerCase());
+    const matchesSearch = doctor?.name
+      ?.toLowerCase()
+      ?.includes(search?.toLowerCase() || "") ?? false;
 
     return matchesCategory && matchesSearch;
   });
@@ -277,13 +277,13 @@ export default function DoctorsGridSection() {
                     View Profile
                   </button> */}
 
-                 <a
-  href={`https://wa.me/919970766313?text=${encodeURIComponent(
-    `Hello AAYUSH Hospital, I would like to book an appointment with ${doctor.name}.`
-  )}`}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="
+                  <a
+                    href={`https://wa.me/919970766313?text=${encodeURIComponent(
+                      `Hello AAYUSH Hospital, I would like to book an appointment with ${doctor.name}.`
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="
     flex-1
     h-[46px]
     rounded-full
@@ -299,10 +299,10 @@ export default function DoctorsGridSection() {
     justify-center
     gap-2
   "
->
-  <FaWhatsapp size={18} />
-  Book Appointment
-</a>
+                  >
+                    <FaWhatsapp size={18} />
+                    Book Appointment
+                  </a>
                 </div>
               </div>
             </div>
