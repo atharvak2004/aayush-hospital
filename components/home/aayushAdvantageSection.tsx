@@ -43,7 +43,7 @@ export default function AayushAdvantageSection() {
       "
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-16">
-        
+
         <div
           className="
             grid
@@ -52,10 +52,10 @@ export default function AayushAdvantageSection() {
             items-center
           "
         >
-          
+
           {/* LEFT SIDE */}
           <div>
-            
+
             {/* Small Title */}
             <p
               className="
@@ -77,20 +77,20 @@ export default function AayushAdvantageSection() {
                 text-[52px]
                 leading-[1.05]
                 tracking-[-2px]
-                font-light
-                max-w-[620px]
+                font-bold
+                max-w-155
               "
             >
-              Setting New Standards in
-              
+              Setting New Standards in Healthcare
+
               <span className="block font-bold mt-2">
-                Healthcare
+
               </span>
             </h2>
 
             {/* Features */}
             <div className="mt-14 space-y-10">
-              
+
               {advantages.map((item, index) => {
                 const Icon = item.icon;
 
@@ -99,7 +99,7 @@ export default function AayushAdvantageSection() {
                     key={index}
                     className="flex items-start gap-5"
                   >
-                    
+
                     {/* Icon */}
                     <div
                       className="
@@ -123,7 +123,7 @@ export default function AayushAdvantageSection() {
 
                     {/* Content */}
                     <div>
-                      
+
                       <h3
                         className="
                           text-white
@@ -155,7 +155,7 @@ export default function AayushAdvantageSection() {
 
           {/* RIGHT SIDE */}
           <div className="relative">
-            
+
             <div
               className="
                 rounded-[36px]

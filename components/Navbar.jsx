@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-
+import { FaWhatsapp } from "react-icons/fa";
 export default function Navbar() {
     const pathname = usePathname();
 
@@ -113,22 +113,35 @@ export default function Navbar() {
                         <Link
                             href="/"
                             className="
-                                relative
-                                z-[100001]
-                                shrink-0
-                            "
+    relative
+    z-[100001]
+    shrink-0
+    flex
+    items-center
+    gap-3
+  "
                         >
+                            <img
+                                src="/Aayush_logo.png"
+                                alt="Aayush Hospital Logo"
+                                className="
+      h-12
+      w-auto
+      object-contain
+    "
+                            />
+
                             <h1
                                 className="
-                                    text-[22px]
-                                    sm:text-[24px]
-                                    lg:text-[28px]
-                                    font-bold
-                                    tracking-[-1px]
-                                    text-[var(--brown-deep)]
-                                    uppercase
-                                    leading-none
-                                "
+      text-[20px]
+      sm:text-[22px]
+      lg:text-[26px]
+      font-bold
+      tracking-[-1px]
+      text-[var(--brown-deep)]
+      uppercase
+      leading-none
+    "
                             >
                                 AAYUSH HOSPITAL
                             </h1>
@@ -190,27 +203,33 @@ export default function Navbar() {
 
                         {/* DESKTOP CTA */}
                         <div className="hidden lg:block">
-                            <button
-                                className="
-                                    bg-[var(--brown-deep)]
-                                    hover:opacity-90
-                                    text-white
-                                    px-8
-                                    py-4
-                                    rounded-full
-                                    text-[13px]
-                                    tracking-[2px]
-                                    font-semibold
-                                    transition-all
-                                    duration-300
-                                    shadow-sm
-                                    cursor-pointer
-                                "
-                            >
-                                BOOK APPOINTMENT
-                            </button>
-                        </div>
-
+  <a
+    href="https://wa.me/919970766313?text=Hello%20AAYUSH%20Hospital,%20I%20would%20like%20to%20book%20an%20appointment."
+    target="_blank"
+    rel="noopener noreferrer"
+    className="
+      bg-[var(--brown-deep)]
+      hover:opacity-90
+      text-white
+      px-8
+      py-4
+      rounded-full
+      text-[13px]
+      tracking-[2px]
+      font-semibold
+      transition-all
+      duration-300
+      shadow-sm
+      cursor-pointer
+      inline-flex
+      items-center
+      gap-2
+    "
+  >
+    <FaWhatsapp size={18} />
+    BOOK APPOINTMENT
+  </a>
+</div>
                         {/* MOBILE TOGGLE */}
                         <button
                             type="button"
@@ -457,24 +476,32 @@ export default function Navbar() {
 
                     {/* MOBILE CTA */}
                     <div className="mt-auto pt-8">
-                        <button
-                            className="
-                                w-full
-                                bg-[var(--brown-deep)]
-                                hover:opacity-90
-                                text-white
-                                py-4
-                                rounded-full
-                                text-[13px]
-                                tracking-[2px]
-                                font-semibold
-                                transition-all
-                                duration-300
-                                shadow-sm
-                            "
-                        >
-                            BOOK APPOINTMENT
-                        </button>
+                        <a
+  href="https://wa.me/919970766313?text=Hello%20AAYUSH%20Hospital,%20I%20would%20like%20to%20book%20an%20appointment."
+  target="_blank"
+  rel="noopener noreferrer"
+  className="
+    w-full
+    flex
+    items-center
+    justify-center
+    gap-2
+    bg-[var(--brown-deep)]
+    hover:opacity-90
+    text-white
+    py-4
+    rounded-full
+    text-[13px]
+    tracking-[2px]
+    font-semibold
+    transition-all
+    duration-300
+    shadow-sm
+  "
+>
+  <FaWhatsapp size={18} />
+  BOOK APPOINTMENT
+</a>
                     </div>
                 </div>
             </div>

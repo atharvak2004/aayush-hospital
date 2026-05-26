@@ -194,28 +194,33 @@ export default function ContactHeroSection() {
               </p>
 
               {/* EMAIL */}
-              <p
+              <a
+                href="mailto:care@aayush.com"
                 className="
-                  mt-6
-                  text-[#5b342b]
-                  text-[15px]
-                  font-semibold
-                  break-all
-                "
+    mt-6
+    block
+    text-[#5b342b]
+    text-[15px]
+    font-semibold
+    break-all
+    hover:underline
+  "
               >
                 care@aayush.com
-              </p>
+              </a>
 
-              {/* PHONE */}
-              <p
+              <a
+                href="tel:+919970766313"
                 className="
-                  mt-2
-                  text-[#7a5b50]
-                  text-[14px]
-                "
+    mt-2
+    block
+    text-[#7a5b50]
+    text-[14px]
+    hover:underline
+  "
               >
-                +91 1102-34-556
-              </p>
+                +91 09970766313
+              </a>
             </div>
 
             {/* CARD 2 */}
@@ -279,18 +284,22 @@ export default function ContactHeroSection() {
               </p>
 
               {/* NUMBER */}
-              <p
+              <a
+                href="tel:+919970766313"
                 className="
-                  mt-6
-                  text-white
-                  text-[22px]
-                  sm:text-[26px]
-                  font-bold
-                  break-words
-                "
+    mt-6
+    block
+    text-white
+    text-[22px]
+    sm:text-[26px]
+    font-bold
+    break-words
+    hover:text-white/80
+    transition-all
+  "
               >
-                +91 (800) EMERGENCY
-              </p>
+                +91 09970766313
+              </a>
 
               {/* SMALL TEXT */}
               <p
@@ -365,30 +374,32 @@ export default function ContactHeroSection() {
                   leading-7
                 "
               >
-                127 Sanctuary Way,
+                Aayush Hospital and Aayush advanced Physiotherapy Clinic,
                 <br />
-                Sanctuary District, HC 90210
+                Samruddhi prime, Opposite to Indian oil Petrol Pump, Sant Nagar Wagholi road Lohegaon Pune 411047
               </p>
 
               {/* BUTTON */}
-              <button
+              <a
+                href="https://google.com/maps?cid=1491924204318330295&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF&hl=en&gl=IN&source=embed"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="
-                  mt-6
-                  flex
-                  items-center
-                  gap-3
-                  text-[#5b342b]
-                  text-[15px]
-                  font-semibold
-                  hover:gap-4
-                  transition-all
-                  duration-300
-                "
+    mt-6
+    flex
+    items-center
+    gap-3
+    text-[#5b342b]
+    text-[15px]
+    font-semibold
+    hover:gap-4
+    transition-all
+    duration-300
+  "
               >
                 Get Directions
-
                 <ArrowRight size={16} />
-              </button>
+              </a>
             </div>
           </div>
         </div>

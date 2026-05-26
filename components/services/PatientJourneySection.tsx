@@ -34,7 +34,7 @@ export default function PatientJourneySection() {
               md:text-[52px]
               leading-none
               tracking-[-2px]
-              font-semibold
+              font-bold
             "
           >
             The Patient Journey

@@ -3,66 +3,55 @@
 import {
   AtSign,
   Share2,
+  ShieldPlus,
 } from "lucide-react";
 
 const leaders = [
   {
-    name: "Dr. Umesh",
-    role: "CHIEF MEDICAL OFFICER",
-    desc: "With over 20 years in specialized surgery, Dr. Thorne focuses on procedural precision combined with empathetic recovery strategies. He leads our clinical innovation department.",
-    image:
-      "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=900&q=80",
+    name: "Dr. Umesh Jaiswal",
+    role: "M.S. General Surgery",
+    desc: "With extensive experience in General Surgery, Dr. Umesh Jaiswal specializes in delivering advanced surgical care with precision and patient-centered treatment approaches. He is dedicated to ensuring safe procedures and effective recovery for every patient.",
   },
   {
-    name: "Dr. Vanni",
-    role: "HEAD OF WELLNESS DESIGN",
-    desc: "Dr. Vane is a pioneer in holistic recovery environments. She ensures that every aspect of the patient journey at AAYUSH is optimized for psychological and physical well-being.",
-    image:
-      "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=900&q=80",
+    name: "Dr. Pradisha Jaiswal",
+    role: "M.P.T. Neurology",
+    desc: "Dr. Pradisha Jaiswal specializes in Neurological Physiotherapy, focusing on rehabilitation and improving the quality of life for patients with neurological conditions. She is committed to personalized therapy plans that promote recovery, mobility, and overall well-being.",
   },
 ];
 
 export default function LeadershipTeamSection() {
   return (
-    <section className="bg-[#f5f3ee] py-28 overflow-hidden">
-      
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        
+    <section className="bg-[#f5f3ee] py-16 md:py-24 lg:py-28 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-10">
+
         {/* Heading */}
-        <div className="text-center mb-24">
-          
+        <div className="text-center mb-14 md:mb-20 lg:mb-24">
+
           <h2
             className="
               text-(--brown-deep)
-              text-[52px]
-              md:text-[72px]
-              leading-none
-              tracking-[-3px]
+              text-4xl
+              sm:text-5xl
+              md:text-6xl
+              lg:text-7xl
+              leading-tight
+              tracking-tight
               font-bold
             "
           >
             The Leadership Team
           </h2>
 
-          {/* Underline */}
-          <div
-            className="
-              w-20
-              h-1
-              bg-[#7a5a24]
-              rounded-full
-              mx-auto
-              mt-8
-            "
-          />
+          <div className="w-20 h-1 bg-[#7a5a24] rounded-full mx-auto mt-5 md:mt-8" />
 
-          {/* Subtitle */}
           <p
             className="
-              mt-8
+              mt-5
+              md:mt-8
               text-(--brown-soft)
-              text-[14px]
-              tracking-[4px]
+              text-[11px]
+              md:text-sm
+              tracking-[3px]
               uppercase
               font-semibold
             "
@@ -72,14 +61,8 @@ export default function LeadershipTeamSection() {
         </div>
 
         {/* Team Grid */}
-        <div
-          className="
-            grid
-            lg:grid-cols-2
-            gap-16
-          "
-        >
-          
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+
           {leaders.map((leader, index) => (
             <div
               key={index}
@@ -87,61 +70,72 @@ export default function LeadershipTeamSection() {
                 flex
                 flex-col
                 sm:flex-row
-                gap-8
-                items-start
+                items-center
+                sm:items-start
+                text-center
+                sm:text-left
+                gap-6
+                lg:gap-8
               "
             >
-              
-              {/* Image */}
+
+              {/* Icon/Image Card */}
               <div
                 className="
-                  relative
-                  overflow-hidden
-                  rounded-4xl
-                  min-w-57.5
-                  w-57.5
-                  h-75
-                  bg-[#ddd]
-                  shadow-lg
+                  rounded-2xl
+                  h-36
+                  w-36
+                  md:h-44
+                  md:w-44
+                  lg:h-80
+                  lg:w-52
+                  bg-white
+                  flex
+                  items-center
+                  justify-center
+                  border
+                  border-[#e4ded6]
+                  hover:shadow-lg
+                  transition-all
+                  duration-500
+                  shrink-0
                 "
               >
-                <img
-                  src={leader.image}
-                  alt={leader.name}
+                <ShieldPlus
                   className="
-                    w-full
-                    h-full
-                    object-cover
-                    hover:scale-105
-                    transition-all
-                    duration-500
+                    w-14
+                    h-14
+                    md:w-20
+                    md:h-20
+                    text-[#4b2d25]
                   "
+                  strokeWidth={1}
                 />
               </div>
 
               {/* Content */}
-              <div className="pt-2">
-                
-                {/* Name */}
+              <div>
+
                 <h3
                   className="
                     text-(--brown-deep)
-                    text-[38px]
-                    leading-none
-                    tracking-[-1px]
+                    text-2xl
+                    md:text-3xl
+                    lg:text-4xl
                     font-semibold
+                    leading-tight
                   "
                 >
                   {leader.name}
                 </h3>
 
-                {/* Role */}
                 <p
                   className="
-                    mt-4
+                    mt-3
                     text-(--brown-soft)
-                    text-[12px]
-                    tracking-[4px]
+                    text-[11px]
+                    md:text-xs
+                    tracking-[3px]
                     uppercase
                     font-semibold
                   "
@@ -149,28 +143,25 @@ export default function LeadershipTeamSection() {
                   {leader.role}
                 </p>
 
-                {/* Description */}
                 <p
                   className="
-                    mt-8
+                    mt-5
                     text-(--brown-soft)
                     text-md
-                    leading-[1.9]
-                    max-w-[420px]
+                    md:text-base
+                    leading-7
+                    max-w-md
                   "
                 >
                   {leader.desc}
                 </p>
 
-                {/* Icons */}
-                <div className="flex items-center gap-5 mt-8">
-                  
+                <div className="flex justify-center sm:justify-start items-center gap-5 mt-6">
                   <button
                     className="
                       text-[#8d8179]
                       hover:text-(--brown-deep)
                       transition-all
-                      cursor-pointer
                     "
                   >
                     <AtSign size={22} />
@@ -181,15 +172,16 @@ export default function LeadershipTeamSection() {
                       text-[#8d8179]
                       hover:text-(--brown-deep)
                       transition-all
-                      cursor-pointer
                     "
                   >
                     <Share2 size={22} />
                   </button>
                 </div>
+
               </div>
             </div>
           ))}
+
         </div>
       </div>
     </section>

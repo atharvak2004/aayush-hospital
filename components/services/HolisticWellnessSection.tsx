@@ -74,7 +74,7 @@ export default function HolisticWellnessSection() {
                 md:text-[64px]
                 leading-[1]
                 tracking-[-2px]
-                font-semibold
+                font-bold
               "
             >
               Holistic Wellness Centers

@@ -8,6 +8,9 @@ import {
   Cross,
 } from "lucide-react";
 import Link from "next/link";
+import CountUp from "react-countup";
+import { FaWhatsapp } from "react-icons/fa";
+
 const services = [
   {
     icon: Asterisk,
@@ -83,41 +86,63 @@ export default function HeroSection() {
             "
           >
             {/* TOP TEXT */}
-            <p
-              className="
-                text-[28px]
-                sm:text-[34px]
-                md:text-[38px]
-                font-light
-                text-[#4b2d25]
-                leading-none
-                tracking-[-1px]
-              "
-            >
-              10+ Years of
-            </p>
+           <p
+  className="
+    text-[28px]
+    sm:text-[34px]
+    md:text-[38px]
+    font-light
+    text-[#4b2d25]
+    leading-none
+    tracking-[-1px]
+  "
+>
+  <CountUp
+    end={10}
+    duration={3}
+    enableScrollSpy
+    scrollSpyOnce
+  />
+  + Years of
+</p>
 
             {/* MAIN HEADING */}
             <h1
               className="
-                mt-4
-                text-[52px]
-                xs:text-[58px]
-                sm:text-[72px]
-                md:text-[82px]
-                lg:text-[92px]
-                leading-[0.9]
-                tracking-[-2px]
-                sm:tracking-[-3px]
-                font-semibold
-                text-[var(--brown-deep)]
-              "
+    mt-4
+    text-[52px]
+    xs:text-[58px]
+    sm:text-[72px]
+    md:text-[82px]
+    lg:text-[92px]
+    leading-[0.9]
+    tracking-[-2px]
+    sm:tracking-[-3px]
+    text-(--brown-deep)
+  "
             >
-              Trusted
+              <span
+                className="font-semibold"
+                style={{ fontFamily: "var(--font-manrope)" }}
+              >
+                Trusted
+              </span>
+
               <br />
-              Healthcare
+
+              <span
+                className="font-semibold"
+                style={{ fontFamily: "var(--font-manrope)" }}
+              >
+                Healthcare
+              </span>
+
               <br />
-              <span className="font-light">
+
+              <span
+                className="font-light"
+                style={{ fontFamily: "var(--font-playfair)" }}
+              >
                 Excellence
               </span>
             </h1>
@@ -149,29 +174,37 @@ export default function HeroSection() {
               "
             >
               {/* BUTTON 1 */}
-              <button
-                className="
-                  w-full
-                  sm:w-auto
-                  min-w-[220px]
-                  bg-[#5a3a32]
-                  hover:bg-[#4a2f29]
-                  text-white
-                  px-8
-                  py-4
-                  rounded-full
-                  text-[12px]
-                  sm:text-[13px]
-                  tracking-[2px]
-                  font-semibold
-                  transition-all
-                  duration-300
-                  whitespace-nowrap
-                  cursor-pointer
-                "
-              >
-                BOOK APPOINTMENT
-              </button>
+              <a
+  href="https://wa.me/919970766313?text=Hello%20AAYUSH%20Hospital,%20I%20would%20like%20to%20book%20an%20appointment."
+  target="_blank"
+  rel="noopener noreferrer"
+  className="
+    w-full
+    sm:w-auto
+    min-w-[220px]
+    inline-flex
+    items-center
+    justify-center
+    gap-2
+    bg-[#5a3a32]
+    hover:bg-[#4a2f29]
+    text-white
+    px-8
+    py-4
+    rounded-full
+    text-[12px]
+    sm:text-[13px]
+    tracking-[2px]
+    font-semibold
+    transition-all
+    duration-300
+    whitespace-nowrap
+    cursor-pointer
+  "
+>
+  <FaWhatsapp size={18} />
+  BOOK APPOINTMENT
+</a>
 
               {/* BUTTON 2 */}
               <Link href="/services">

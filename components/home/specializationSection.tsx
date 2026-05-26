@@ -2,11 +2,11 @@
 
 import {
   Stethoscope,
-  Pencil,
-  Smile,
-  Heart,
-  Sprout,
-  ScanLine,
+  Syringe,
+  Baby,
+  HeartPulse,
+  Brain,
+  ScanSearch,
 } from "lucide-react";
 
 const specializations = [
@@ -16,32 +16,31 @@ const specializations = [
     desc: "Comprehensive preventive care and diagnostic services for adults of all ages.",
   },
   {
-    icon: Pencil,
+    icon: Syringe,
     title: "Advanced Surgery",
     desc: "State-of-the-art surgical procedures utilizing minimally invasive techniques.",
   },
   {
-    icon: Smile,
+    icon: Baby,
     title: "Pediatrics",
     desc: "Expert pediatric care in a warm, child-friendly environment for your little ones.",
   },
   {
-    icon: Heart,
+    icon: HeartPulse,
     title: "Cardiology",
     desc: "Comprehensive heart health management from prevention to complex treatments.",
   },
   {
-    icon: Sprout,
+    icon: Brain,
     title: "Neurology",
     desc: "Specialized care for neurological disorders with advanced brain mapping technology.",
   },
   {
-    icon: ScanLine,
+    icon: ScanSearch,
     title: "Radiology",
     desc: "High-precision imaging services for accurate and fast clinical diagnosis.",
   },
 ];
-
 export default function SpecializationsSection() {
   return (
     <section className="bg-[#f3f1ec] py-24">
@@ -70,7 +69,7 @@ export default function SpecializationsSection() {
               leading-none
               tracking-[-2px]
               text-(--brown-deep)
-              font-semibold
+              font-bold
             "
           >
             World-Class Medical Care

@@ -2,7 +2,7 @@
 
 import { Search } from "lucide-react";
 import { useState } from "react";
-
+import { FaWhatsapp } from "react-icons/fa";
 const categories = [
   "All Departments",
   "Cardiology",
@@ -11,25 +11,25 @@ const categories = [
   "Orthopedics",
 ];
 
+import {
+  ShieldPlus,
+} from "lucide-react";
+
 const doctors = [
-  {
-    name: "Dr. Umens",
-    role: "CHIEF OF CARDIOLOGY",
-    category: "Cardiology",
-    desc: "Healing begins with the heart, both physically and through the compassionate connection we build with every patient.",
-    image:
-      "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=900&q=80",
+   {
+    name: "Dr. Umesh Jaiswal",
+    role: "M.S. General Surgery",
+    category: "General Surgery",
+    desc: "Specialized in advanced surgical care with a focus on precision, safety, and patient recovery.",
   },
   {
-    name: "Dr. Umesh",
-    role: "LEAD NEUROSURGEON",
+    name: "Dr. Pradisha Jaiswal",
+    role: "M.P.T. Neurology",
     category: "Neurology",
-    desc: "Precision in treatment meets empathy in care. Understanding the mind is the first step to holistic recovery.",
-    image:
-      "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=900&q=80",
+    desc: "Focused on neurological rehabilitation, mobility improvement, and personalized patient care.",
   },
   {
-    name: "Dr. Umesh",
+    name: "Dr. Jonathan Aris",
     role: "LEAD SURGEON",
     category: "Orthopedics",
     desc: "Advancing the art of surgery through minimal intervention and maximal attention to patient well-being.",
@@ -56,9 +56,9 @@ export default function DoctorsGridSection() {
 
   return (
     <section className="bg-[#f5f3ee] py-20 overflow-hidden">
-      
+
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        
+
         {/* Top Filters */}
         <div
           className="
@@ -71,7 +71,7 @@ export default function DoctorsGridSection() {
             mb-16
           "
         >
-          
+
           {/* Search */}
           <div
             className="
@@ -111,7 +111,7 @@ export default function DoctorsGridSection() {
 
           {/* Categories */}
           <div className="flex flex-wrap gap-3">
-            
+
             {categories.map((item, index) => (
               <button
                 key={index}
@@ -124,10 +124,9 @@ export default function DoctorsGridSection() {
                   font-medium
                   transition-all
                   whitespace-nowrap
-                  ${
-                    active === item
-                      ? "bg-[#4b2d25] text-white"
-                      : "bg-[#ece7df] text-[#5b342b] hover:bg-[#e4ddd5]"
+                  ${active === item
+                    ? "bg-[#4b2d25] text-white"
+                    : "bg-[#ece7df] text-[#5b342b] hover:bg-[#e4ddd5]"
                   }
                 `}
               >
@@ -146,7 +145,7 @@ export default function DoctorsGridSection() {
             gap-8
           "
         >
-          
+
           {filteredDoctors.map((doctor, index) => (
             <div
               key={index}
@@ -160,49 +159,65 @@ export default function DoctorsGridSection() {
                 transition-all
               "
             >
-              
+
               {/* Image */}
-              <div className="relative overflow-hidden">
-                
+              {/* Icon Card */}
+              <div className="relative p-6">
+
                 {/* Category Badge */}
                 <div
                   className="
-                    absolute
-                    top-4
-                    left-4
-                    z-10
-                    px-4
-                    py-1.5
-                    rounded-full
-                    bg-[#c89b43]
-                    text-[#fff]
-                    text-[10px]
-                    tracking-[2px]
-                    uppercase
-                    font-semibold
-                  "
+      absolute
+      top-10
+      left-10
+      z-10
+      px-4
+      py-1.5
+      rounded-full
+      bg-[#c89b43]
+      text-white
+      text-[10px]
+      tracking-[2px]
+      uppercase
+      font-semibold
+    "
                 >
                   {doctor.category}
                 </div>
 
-                <img
-                  src={doctor.image}
-                  alt={doctor.name}
+                <div
                   className="
-                    w-full
-                    h-[380px]
-                    object-cover
-                    grayscale
-                    hover:scale-105
-                    transition-all
-                    duration-500
-                  "
-                />
+      rounded-2xl
+      h-[320px]
+      md:h-[360px]
+      bg-white
+      flex
+      items-center
+      justify-center
+      border
+      border-[#e4ded6]
+      hover:shadow-lg
+      transition-all
+      duration-500
+    "
+                >
+                  <ShieldPlus
+                    className="
+        w-24
+        h-24
+        md:w-28
+        md:h-28
+        text-[#4b2d25]
+      "
+                    strokeWidth={1}
+                  />
+                </div>
+
               </div>
 
               {/* Content */}
               <div className="p-7">
-                
+
                 {/* Name */}
                 <h3
                   className="
@@ -244,13 +259,13 @@ export default function DoctorsGridSection() {
 
                 {/* Buttons */}
                 <div className="flex gap-3 mt-8">
-                  
-                  <button
+
+                  {/* <button
                     className="
                       flex-1
                       h-[46px]
                       rounded-full
-                      bg-[#ece7df]
+                        bg-[#ece7df]
                       hover:bg-[#e4ddd5]
                       text-[#4b2d25]
                       text-[14px]
@@ -260,24 +275,34 @@ export default function DoctorsGridSection() {
                     "
                   >
                     View Profile
-                  </button>
+                  </button> */}
 
-                  <button
-                    className="
-                      flex-1
-                      h-[46px]
-                      rounded-full
-                      bg-[#5b342b]
-                      hover:bg-[#4b2d25]
-                      text-white
-                      text-[14px]
-                      font-medium
-                      transition-all
-                      cursor-pointer
-                    "
-                  >
-                    Book Appointment
-                  </button>
+                 <a
+  href={`https://wa.me/919970766313?text=${encodeURIComponent(
+    `Hello AAYUSH Hospital, I would like to book an appointment with ${doctor.name}.`
+  )}`}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="
+    flex-1
+    h-[46px]
+    rounded-full
+    bg-[#5b342b]
+    hover:bg-[#4b2d25]
+    text-white
+    text-[14px]
+    font-medium
+    transition-all
+    cursor-pointer
+    flex
+    items-center
+    justify-center
+    gap-2
+  "
+>
+  <FaWhatsapp size={18} />
+  Book Appointment
+</a>
                 </div>
               </div>
             </div>

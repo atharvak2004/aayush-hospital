@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-
+import CountUp from "react-countup";
 export default function AboutHeroSection() {
   return (
     <section className="bg-[#f5f3ee] py-24 lg:py-32 overflow-hidden">
@@ -78,24 +78,30 @@ export default function AboutHeroSection() {
               <div>
                 <h3
                   className="
-                    text-(--brown-deep)
-                    text-[42px]
-                    font-bold
-                    leading-none
-                  "
+        text-(--brown-deep)
+        text-[42px]
+        font-bold
+        leading-none
+      "
                 >
-                  10+
+                  <CountUp
+                    end={10}
+                    duration={3}
+                    enableScrollSpy
+                    scrollSpyOnce
+                  />
+                  +
                 </h3>
 
                 <p
                   className="
-                    mt-3
-                    text-[#9a8f88]
-                    text-[12px]
-                    tracking-[3px]
-                    uppercase
-                    font-semibold
-                  "
+        mt-3
+        text-[#9a8f88]
+        text-[12px]
+        tracking-[3px]
+        uppercase
+        font-semibold
+      "
                 >
                   Years of Excellence
                 </p>
@@ -105,24 +111,30 @@ export default function AboutHeroSection() {
               <div>
                 <h3
                   className="
-                    text-(--brown-deep)
-                    text-[42px]
-                    font-bold
-                    leading-none
-                  "
+        text-(--brown-deep)
+        text-[42px]
+        font-bold
+        leading-none
+      "
                 >
-                  50K+
+                  <CountUp
+                    end={50}
+                    duration={3}
+                    enableScrollSpy
+                    scrollSpyOnce
+                  />
+                  K+
                 </h3>
 
                 <p
                   className="
-                    mt-3
-                    text-[#9a8f88]
-                    text-[12px]
-                    tracking-[3px]
-                    uppercase
-                    font-semibold
-                  "
+        mt-3
+        text-[#9a8f88]
+        text-[12px]
+        tracking-[3px]
+        uppercase
+        font-semibold
+      "
                 >
                   Lives Touched
                 </p>

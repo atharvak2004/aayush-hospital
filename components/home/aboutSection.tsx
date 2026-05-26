@@ -6,14 +6,14 @@ import Link from "next/link";
 export default function AboutSection() {
   return (
     <section className="bg-[#f6f4ef] py-24 overflow-hidden">
-      
+
       <div className="max-w-7xl mx-auto px-6 lg:px-16">
-        
+
         <div className="grid lg:grid-cols-2 gap-20 items-center">
-          
+
           {/* LEFT SIDE */}
           <div className="relative">
-            
+
             {/* Decorative Circle */}
             <div className="absolute -top-2 -left-8 w-28 h-28 rounded-full border border-[#d8c7a2] z-0" />
 
@@ -72,7 +72,7 @@ export default function AboutSection() {
 
           {/* RIGHT SIDE */}
           <div className="max-w-155">
-            
+
             {/* Small Title */}
             <p
               className="
@@ -90,23 +90,17 @@ export default function AboutSection() {
             {/* Main Heading */}
             <h2
               className="
-                text-[52px]
-                leading-[1.05]
-                tracking-[-2px]
-                text-(--brown-deep)
-                font-light
-              "
+    text-[50px]
+    leading-[1.05]
+    tracking-[-2px]
+    text-(--brown-deep)
+    font-bold
+  "
             >
               A Decade of
               <br />
+              Compassionate Healing
 
-              <span className="font-bold">
-                Compassionate
-              </span>{" "}
-
-              <span className="text-(--brown-deep)">
-                Healing
-              </span>
             </h2>
 
             {/* Description */}
@@ -140,9 +134,9 @@ export default function AboutSection() {
                 transition-all
                 cursor-pointer
               "
-            >
-              Learn More About Our History
-            </button>
+              >
+                Learn More About Our History
+              </button>
             </Link>
           </div>
         </div>

@@ -1,12 +1,11 @@
 "use client";
-
 import {
   Stethoscope,
-  Microscope,
-  Heart,
+  Syringe,
+  HeartPulse,
   Brain,
-  Smile,
-  Activity,
+  Baby,
+  ScanSearch,
 } from "lucide-react";
 
 const departments = [
@@ -17,17 +16,17 @@ const departments = [
     large: true,
   },
   {
-    icon: Activity,
+    icon: Syringe,
     title: "Advanced Surgery",
     desc: "Minimally invasive techniques for faster recovery and precise outcomes.",
   },
   {
-    icon: Smile,
+    icon: Baby,
     title: "Pediatrics",
     desc: "Expert, gentle care for your little ones in a kid-friendly environment.",
   },
   {
-    icon: Heart,
+    icon: HeartPulse,
     title: "Cardiology",
     desc: "Comprehensive heart health management and rhythm diagnostic services.",
   },
@@ -38,7 +37,7 @@ const departments = [
     large: true,
   },
   {
-    icon: Microscope,
+    icon: ScanSearch,
     title: "Radiology",
     desc: "High-precision digital imaging for accurate and fast diagnostics.",
   },
@@ -60,7 +59,7 @@ export default function ClinicalDepartmentsSection() {
               md:text-[52px]
               leading-none
               tracking-[-2px]
-              font-semibold
+              font-bold
             "
           >
             Clinical Departments

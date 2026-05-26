@@ -8,6 +8,11 @@ import {
   Camera,
   Send,
 } from "lucide-react";
+import {
+  FaWhatsapp,
+  FaInstagram,
+  FaLinkedinIn,
+} from "react-icons/fa";
 
 export default function GetInTouchSection() {
   return (
@@ -45,7 +50,7 @@ export default function GetInTouchSection() {
                   text-[52px]
                   leading-none
                   tracking-[-1px]
-                  font-semibold
+                  font-bold
                   mb-12
                 "
               >
@@ -94,9 +99,10 @@ export default function GetInTouchSection() {
                         leading-8
                       "
                     >
-                      123 Wellness Blvd, Sanctuary District,
+                      Aayush Hospital and Aayush advanced Physiotherapy Clinic, 
                       <br />
-                      Health City, HC 54321
+                      Samruddhi prime, Opposite to Indian oil Petrol Pump, Sant Nagar Wagholi road Lohegaon Pune 411047
+                      
                     </p>
                   </div>
                 </div>
@@ -140,7 +146,7 @@ export default function GetInTouchSection() {
                         leading-8
                       "
                     >
-                      +1 (800) 555-0199 (24/7)
+                      +91 09970766313
                     </p>
                   </div>
                 </div>
@@ -193,47 +199,68 @@ export default function GetInTouchSection() {
 
             {/* Socials */}
             <div className="mt-14">
-              
-              <p
-                className="
-                  uppercase
-                  tracking-[4px]
-                  text-(--deep-brown)
-                  text-[12px]
-                  font-semibold
-                  mb-5
-                "
-              >
-                Follow Us
-              </p>
 
-              <div className="flex items-center gap-4">
-                
-                {[Globe, Camera, Send].map(
-                  (Icon, index) => (
-                    <button
-                      key={index}
-                      className="
-                        w-12
-                        h-12
-                        rounded-full
-                        bg-white
-                        border
-                        border-[#e2d9cf]
-                        flex
-                        items-center
-                        justify-center
-                        hover:bg-[#5b342b]
-                        hover:text-white
-                        transition-all
-                      "
-                    >
-                      <Icon size={18} />
-                    </button>
-                  )
-                )}
-              </div>
-            </div>
+  <p
+    className="
+      uppercase
+      tracking-[4px]
+      text-(--deep-brown)
+      text-[12px]
+      font-semibold
+      mb-5
+    "
+  >
+    Follow Us
+  </p>
+
+  <div className="flex items-center gap-4">
+
+    {[
+      {
+        icon: FaWhatsapp,
+        href: "https://wa.me/919970766313",
+      },
+      {
+        icon: FaInstagram,
+        href: "#",
+      },
+      {
+        icon: FaLinkedinIn,
+        href: "#",
+      },
+    ].map((item, index) => {
+      const Icon = item.icon;
+
+      return (
+        <a
+          key={index}
+          href={item.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="
+            w-12
+            h-12
+            rounded-full
+            bg-white
+            border
+            border-[#e2d9cf]
+            flex
+            items-center
+            justify-center
+            text-[#5b342b]
+            hover:bg-[#5b342b]
+            hover:text-white
+            hover:-translate-y-1
+            transition-all
+            duration-300
+          "
+        >
+          <Icon size={18} />
+        </a>
+      );
+    })}
+  </div>
+</div>
           </div>
 
           {/* RIGHT MAP */}
@@ -248,7 +275,7 @@ export default function GetInTouchSection() {
             
             <iframe
               title="Aayush Hospital Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.5!2d73.8567!3d18.5204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDMxJzEzLjQiTiA3M8KwNTEnMjQuMSJF!5e0!3m2!1sen!2sin!4v1234567890"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24162.036409854387!2d73.93503590443012!3d18.598922224405282!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c76caa595d01%3A0x14b46128c6338db7!2sAayush%20hospital%20and%20Aayush%20advanced%20physiotherapy%20clinic!5e0!3m2!1sen!2sin!4v1779192483629!5m2!1sen!2sin"
               className="
                 absolute
                 inset-0
@@ -262,37 +289,7 @@ export default function GetInTouchSection() {
             />
 
             {/* Overlay Label */}
-            <div
-              className="
-                absolute
-                top-6
-                left-6
-                bg-white/90
-                backdrop-blur-md
-                px-5
-                py-4
-                rounded-2xl
-                flex
-                items-center
-                gap-3
-                shadow-lg
-              "
-            >
-              <MapPin
-                size={18}
-                className="text-(--deep-brown)"
-              />
-
-              <span
-                className="
-                  text-(--brown-deep)
-                  text-[15px]
-                  font-semibold
-                "
-              >
-                Aayush Hospital
-              </span>
-            </div>
+            
           </div>
         </div>
       </div>

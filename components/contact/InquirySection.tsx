@@ -1,16 +1,85 @@
 "use client";
 
-import {
-  MapPin,
-  Plus,
-} from "lucide-react";
-
+import { useState } from "react";
+import { MapPin, Plus } from "lucide-react";
+import { toast } from "sonner";
 export default function InquirySection() {
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    department: "",
+    message: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
+
+    e.preventDefault();
+
+    try {
+
+      setLoading(true);
+
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+
+        toast.success("Message sent successfully");
+
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          department: "",
+          message: "",
+        });
+
+      } else {
+
+        toast.error(data.message || "Something went wrong");
+      }
+
+    } catch (error) {
+
+      console.error(error);
+
+      toast.error("Something went wrong");
+
+    } finally {
+
+      setLoading(false);
+    }
+  };
+
   return (
     <section className="bg-[#f5f3ee] py-24 overflow-hidden">
-      
+
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        
+
         <div
           className="
             grid
@@ -18,7 +87,7 @@ export default function InquirySection() {
             gap-10
           "
         >
-          
+
           {/* LEFT FORM */}
           <div
             className="
@@ -28,7 +97,7 @@ export default function InquirySection() {
               lg:p-10
             "
           >
-            
+
             {/* Heading */}
             <h2
               className="
@@ -36,7 +105,7 @@ export default function InquirySection() {
                 text-[48px]
                 leading-none
                 tracking-[-2px]
-                font-semibold
+                font-bold
               "
             >
               Send an Inquiry
@@ -56,13 +125,18 @@ export default function InquirySection() {
               will reach out within 24 hours.
             </p>
 
-            {/* Form */}
-            <form className="mt-12">
-              
+            {/* FORM */}
+            <form
+              className="mt-12"
+              onSubmit={handleSubmit}
+            >
+
               {/* Row 1 */}
               <div className="grid md:grid-cols-2 gap-5">
-                
+
+                {/* Name */}
                 <div>
+
                   <label
                     className="
                       block
@@ -74,12 +148,16 @@ export default function InquirySection() {
                       mb-4
                     "
                   >
-                    Full Name
+                    Full Name <span className="text-red-500">*</span>
                   </label>
 
                   <input
                     type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
                     placeholder="John Doe"
+                    required
                     className="
                       w-full
                       h-[60px]
@@ -96,7 +174,9 @@ export default function InquirySection() {
                   />
                 </div>
 
+                {/* Email */}
                 <div>
+
                   <label
                     className="
                       block
@@ -108,12 +188,16 @@ export default function InquirySection() {
                       mb-4
                     "
                   >
-                    Email Address
+                    Email Address <span className="text-red-500">*</span>
                   </label>
 
                   <input
                     type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     placeholder="john@example.com"
+                    required
                     className="
                       w-full
                       h-[60px]
@@ -133,8 +217,10 @@ export default function InquirySection() {
 
               {/* Row 2 */}
               <div className="grid md:grid-cols-2 gap-5 mt-7">
-                
+
+                {/* Phone */}
                 <div>
+
                   <label
                     className="
                       block
@@ -151,6 +237,9 @@ export default function InquirySection() {
 
                   <input
                     type="text"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
                     placeholder="+1 (000) 000-0000"
                     className="
                       w-full
@@ -168,7 +257,9 @@ export default function InquirySection() {
                   />
                 </div>
 
+                {/* Department */}
                 <div>
+
                   <label
                     className="
                       block
@@ -184,6 +275,9 @@ export default function InquirySection() {
                   </label>
 
                   <select
+                    name="department"
+                    value={formData.department}
+                    onChange={handleChange}
                     className="
                       w-full
                       h-[60px]
@@ -197,18 +291,18 @@ export default function InquirySection() {
                       focus:border-[#c7a16a]
                     "
                   >
-                    <option>Select Department</option>
-                    <option>Cardiology</option>
-                    <option>Neurology</option>
-                    <option>Pediatrics</option>
-                    <option>Orthopedics</option>
+                    <option value="">Select Department</option>
+                    <option value="Cardiology">Cardiology</option>
+                    <option value="Neurology">Neurology</option>
+                    <option value="Pediatrics">Pediatrics</option>
+                    <option value="Orthopedics">Orthopedics</option>
                   </select>
                 </div>
               </div>
 
               {/* Message */}
               <div className="mt-7">
-                
+
                 <label
                   className="
                     block
@@ -220,12 +314,16 @@ export default function InquirySection() {
                     mb-4
                   "
                 >
-                  Message
+                  Message <span className="text-red-500">*</span>
                 </label>
 
                 <textarea
                   rows={6}
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
                   placeholder="How can we assist you today?"
+                  required
                   className="
                     w-full
                     rounded-[24px]
@@ -246,6 +344,7 @@ export default function InquirySection() {
               {/* Button */}
               <button
                 type="submit"
+                disabled={loading}
                 className="
                   mt-10
                   w-full
@@ -261,16 +360,18 @@ export default function InquirySection() {
                   hover:opacity-95
                   transition-all
                   cursor-pointer
+                  disabled:opacity-50
                 "
               >
-                Send Message
+                {loading ? "Sending..." : "Send Message"}
               </button>
+
             </form>
           </div>
 
-          {/* RIGHT MAP */}
+          {/* RIGHT SECTION */}
           <div>
-            
+
             {/* Heading */}
             <h2
               className="
@@ -278,7 +379,7 @@ export default function InquirySection() {
                 text-[48px]
                 leading-none
                 tracking-[-2px]
-                font-semibold
+                font-bold
               "
             >
               Our Sanctuary
@@ -309,11 +410,10 @@ export default function InquirySection() {
                 bg-[#dfddd8]
               "
             >
-              
-              {/* Map iframe */}
+
               <iframe
                 title="Aayush Hospital Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.5!2d73.8567!3d18.5204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDMxJzEzLjQiTiA3M8KwNTEnMjQuMSJF!5e0!3m2!1sen!2sin!4v1234567890"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24162.036409854387!2d73.93503590443012!3d18.598922224405282!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c76caa595d01%3A0x14b46128c6338db7!2sAayush%20hospital%20and%20Aayush%20advanced%20physiotherapy%20clinic!5e0!3m2!1sen!2sin!4v1779192483629!5m2!1sen!2sin"
                 className="
                   absolute
                   inset-0
@@ -325,71 +425,6 @@ export default function InquirySection() {
                 allowFullScreen
               />
 
-              {/* Floating Card */}
-              <div
-                className="
-                  absolute
-                  left-1/2
-                  top-1/2
-                  -translate-x-1/2
-                  -translate-y-1/2
-                  bg-white
-                  rounded-[22px]
-                  shadow-2xl
-                  px-6
-                  py-5
-                  flex
-                  items-center
-                  gap-5
-                  min-w-[320px]
-                "
-              >
-                
-                {/* Icon */}
-                <div
-                  className="
-                    w-14
-                    h-14
-                    rounded-full
-                    bg-(--brown-deep)
-                    flex
-                    items-center
-                    justify-center
-                  "
-                >
-                  <Plus
-                    size={22}
-                    className="text-white"
-                  />
-                </div>
-
-                {/* Content */}
-                <div>
-                  
-                  <h3
-                    className="
-                      text-(--brown-deep)
-                      text-[20px]
-                      font-bold
-                    "
-                  >
-                    AAYUSH HOSPITAL
-                  </h3>
-
-                  <p
-                    className="
-                      mt-1
-                      text-(--brown-soft)
-                      text-[12px]
-                      tracking-[3px]
-                      uppercase
-                      font-semibold
-                    "
-                  >
-                    Main Sanctuary Campus
-                  </p>
-                </div>
-              </div>
             </div>
           </div>
         </div>

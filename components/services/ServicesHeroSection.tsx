@@ -30,7 +30,7 @@ export default function ServicesHeroSection() {
                 rounded-full
                 bg-[#f5d89f]
                 text-[#8a6329]
-                text-[11px]
+                text-[12px]
                 tracking-[3px]
                 uppercase
                 font-semibold
@@ -52,7 +52,7 @@ export default function ServicesHeroSection() {
               "
             >
               Our Medical
-              <br />
+              <br /> 
               Services
             </h1>
 

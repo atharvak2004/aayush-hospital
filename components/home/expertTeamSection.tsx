@@ -1,7 +1,13 @@
 "use client";
 
 import { useRef } from "react";
-
+import { Stethoscope } from "lucide-react";
+import {
+  UserRound,
+  HeartPulse,
+  BriefcaseMedical,
+  ShieldPlus
+} from "lucide-react";
 const doctors = [
   {
     name: "Dr. Jonathan Aris",
@@ -53,12 +59,12 @@ export default function ExpertTeamSection() {
 
   return (
     <section className="bg-[#f4f2ed] py-24 overflow-hidden">
-      
+
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-        
+
         {/* Header */}
         <div className="flex items-center justify-between mb-16">
-          
+
           <div>
             <p
               className="
@@ -79,7 +85,7 @@ export default function ExpertTeamSection() {
                 leading-none
                 tracking-[-2px]
                 text-(--brown-deep)
-                font-semibold
+                font-bold
               "
             >
               Meet Our Specialists
@@ -87,7 +93,7 @@ export default function ExpertTeamSection() {
           </div>
 
           <div className="flex items-center gap-4">
-            
+
             {/* Arrows */}
             {isCarousel && (
               <>
@@ -134,7 +140,7 @@ export default function ExpertTeamSection() {
             )}
 
             {/* Button */}
-            <button
+            {/* <button
               className="
                 hidden
                 md:flex
@@ -154,13 +160,13 @@ export default function ExpertTeamSection() {
               "
             >
               VIEW ALL DOCTORS
-            </button>
+            </button> */}
           </div>
         </div>
 
         {/* CONDITIONAL LAYOUT */}
         {isCarousel ? (
-          
+
           <div
             ref={scrollRef}
             className="
@@ -177,7 +183,7 @@ export default function ExpertTeamSection() {
           </div>
 
         ) : (
-          
+
           <div
             className="
               grid
@@ -206,36 +212,39 @@ function DoctorCard({
 }) {
   return (
     <div className={carousel ? "min-w-[320px]" : ""}>
-      
-      {/* Image */}
+
+      {/* Doctor Icon */}
       <div
         className="
-          rounded-2xl
-          overflow-hidden
-          h-[420px]
-          bg-gray-200
-        "
+    rounded-2xl
+    h-[420px]
+    bg-white
+    flex
+    items-center
+    justify-center
+    border
+    border-[#e4ded6]
+    hover:shadow-lg
+    transition-all
+    duration-500
+  "
       >
-        <img
-          src={doctor.image}
-          alt={doctor.name}
+        <ShieldPlus
           className="
-            w-full
-            h-full
-            object-cover
-            hover:scale-105
-            transition-all
-            duration-500
-          "
+      w-28
+      h-28
+      text-[#4b2d25]
+    "
+          strokeWidth={1}
         />
       </div>
 
       {/* Content */}
       <div className="mt-5">
-        
+
         <h3
           className="
-            text-[32px]
+            text-2xl
             leading-tight
             text-(--brown-deep)
             font-semibold

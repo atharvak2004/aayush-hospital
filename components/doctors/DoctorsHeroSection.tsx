@@ -33,7 +33,7 @@ export default function DoctorsHeroSection() {
         >
           Our World-Class
           <br />
-          Specialists
+          <span className="font-medium" style={{ fontFamily: "var(--font-playfair)" }}>Specialists</span>
         </h1>
 
         {/* Description */}

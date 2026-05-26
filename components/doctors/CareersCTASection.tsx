@@ -64,23 +64,24 @@ export default function CareersCTASection() {
 
             {/* Button */}
             <button
-              className="
-                mt-10
-                w-fit
-                px-8
-                h-13
-                rounded-full
-                bg-[#f7e7df]
-                hover:bg-white
-                text-(--brown-deep)
-                text-[14px]
-                font-semibold
-                transition-all
-                cursor-pointer
-              "
-            >
-              Join Our Team
-            </button>
+  disabled
+  className="
+    mt-10
+    w-fit
+    px-8
+    h-13
+    rounded-full
+    bg-[#f0ebe7]
+    text-[#8d8179]
+    text-[14px]
+    font-semibold
+    cursor-not-allowed
+    opacity-75
+    select-none
+  "
+>
+  Coming Soon
+</button>
           </div>
 
           {/* RIGHT IMAGE */}
