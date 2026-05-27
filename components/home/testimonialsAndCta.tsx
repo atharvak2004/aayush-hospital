@@ -82,11 +82,11 @@ export default function TestimonialsSection() {
               mb-5
             "
           >
-            <img
+            {/* <img
               src={testimonial.avatar}
               alt={testimonial.name}
               className="w-full h-full object-cover"
-            />
+            /> */}
           </div>
 
           {/* Name */}

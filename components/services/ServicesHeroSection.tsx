@@ -88,7 +88,7 @@ export default function ServicesHeroSection() {
               "
             >
               <Image
-                src="/Aayush_Services_hero.png"
+                src="/Aayush_About_Hero1.JPG"
                 alt="Luxury Hospital Corridor"
                 fill
                 priority

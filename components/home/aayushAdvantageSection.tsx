@@ -165,13 +165,13 @@ export default function AayushAdvantageSection() {
               "
             >
               <img
-                src="/Home_whyChooseAayush.png"
+                src="/Aayush_Home_advantages.png"
                 alt="Modern Operation Theatre"
                 className="
                   w-full
                   h-full
                   object-cover
-                  grayscale
+                  
                   brightness-75
 
                 "

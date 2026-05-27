@@ -30,7 +30,7 @@ export default function AboutSection() {
               "
             >
               <Image
-                src="/Home_outheritage.png"
+                src="/Home_about_section.JPG"
                 alt="Doctor"
                 fill
                 className="object-cover"
