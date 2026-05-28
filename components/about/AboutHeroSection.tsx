@@ -155,7 +155,7 @@ export default function AboutHeroSection() {
     "
             >
               <Image
-                src="/Aayush_About_Hero2.png"
+                src="/Aayush_About_Hero3.png"
                 alt="Luxury Hospital Interior"
                 fill
                 priority

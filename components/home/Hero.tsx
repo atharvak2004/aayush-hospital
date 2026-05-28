@@ -36,7 +36,7 @@ export default function HeroSection() {
       {/* BACKGROUND IMAGE */}
       <div className="absolute inset-0">
         <Image
-          src="/Aayush_Hero_Image4.png"
+          src="/Aayush_Hero_Image9.png"
           alt="Hospital Interior"
           fill
           priority
