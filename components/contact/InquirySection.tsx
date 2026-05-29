@@ -156,7 +156,7 @@ export default function InquirySection() {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="John Doe"
+                    placeholder="Rohan Verma"
                     required
                     className="
                       w-full
@@ -196,7 +196,7 @@ export default function InquirySection() {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="john@example.com"
+                    placeholder="rohan.verma@example.com"
                     required
                     className="
                       w-full
@@ -240,7 +240,7 @@ export default function InquirySection() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder="+1 (000) 000-0000"
+                    placeholder="+91 98765 43210"
                     className="
                       w-full
                       h-[60px]
