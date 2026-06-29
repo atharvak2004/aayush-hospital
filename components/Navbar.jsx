@@ -64,6 +64,10 @@ export default function Navbar() {
             href: '/doctors',
         },
         {
+            name: 'BLOGS',
+            href: '/blogs',
+        },
+        {
             name: 'CONTACT',
             href: '/contact',
         },
@@ -81,7 +85,7 @@ export default function Navbar() {
                     top-0
                     left-0
                     w-full
-                    z-[99999]
+                    z-99999
                     transition-all
                     duration-300
                     ${scrolled
@@ -114,7 +118,7 @@ export default function Navbar() {
                             href="/"
                             className="
     relative
-    z-[100001]
+    z-100001
     shrink-0
     flex
     items-center
@@ -125,7 +129,8 @@ export default function Navbar() {
                                 src="/Aayush_logo.png"
                                 alt="Aayush Hospital Logo"
                                 className="
-      h-12
+      h-10
+      md:h-12
       w-auto
       object-contain
     "
@@ -203,11 +208,11 @@ export default function Navbar() {
 
                         {/* DESKTOP CTA */}
                         <div className="hidden lg:block">
-  <a
-    href="https://wa.me/919970766313?text=Hello%20AAYUSH%20Hospital,%20I%20would%20like%20to%20book%20an%20appointment."
-    target="_blank"
-    rel="noopener noreferrer"
-    className="
+                            <a
+                                href="https://wa.me/919970766313?text=Hello%20AAYUSH%20Hospital,%20I%20would%20like%20to%20book%20an%20appointment."
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="
       bg-[var(--brown-deep)]
       hover:opacity-90
       text-white
@@ -225,11 +230,11 @@ export default function Navbar() {
       items-center
       gap-2
     "
-  >
-    <FaWhatsapp size={18} />
-    BOOK APPOINTMENT
-  </a>
-</div>
+                            >
+                                <FaWhatsapp size={18} />
+                                BOOK APPOINTMENT
+                            </a>
+                        </div>
                         {/* MOBILE TOGGLE */}
                         <button
                             type="button"
@@ -477,10 +482,10 @@ export default function Navbar() {
                     {/* MOBILE CTA */}
                     <div className="mt-auto pt-8">
                         <a
-  href="https://wa.me/919970766313?text=Hello%20AAYUSH%20Hospital,%20I%20would%20like%20to%20book%20an%20appointment."
-  target="_blank"
-  rel="noopener noreferrer"
-  className="
+                            href="https://wa.me/919970766313?text=Hello%20AAYUSH%20Hospital,%20I%20would%20like%20to%20book%20an%20appointment."
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="
     w-full
     flex
     items-center
@@ -498,10 +503,10 @@ export default function Navbar() {
     duration-300
     shadow-sm
   "
->
-  <FaWhatsapp size={18} />
-  BOOK APPOINTMENT
-</a>
+                        >
+                            <FaWhatsapp size={18} />
+                            BOOK APPOINTMENT
+                        </a>
                     </div>
                 </div>
             </div>

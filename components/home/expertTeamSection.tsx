@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { Stethoscope } from "lucide-react";
+import Image from "next/image";
 import {
   UserRound,
   HeartPulse,
@@ -10,36 +11,16 @@ import {
 } from "lucide-react";
 const doctors = [
   {
-    name: "Dr. Jonathan Aris",
-    role: "CHIEF CARDIOLOGIST",
-    image:
-      "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=900&q=80",
+    name: "Dr. Umesh Jaiswal",
+    role: "M.S. General Surgery",
+    image: "/Dr. Umesh Jaiswal.png",
+    desc: "With extensive experience in General Surgery, Dr. Umesh Jaiswal specializes in delivering advanced surgical care with precision and patient-centered treatment approaches. He is dedicated to ensuring safe procedures and effective recovery for every patient.",
   },
   {
-    name: "Dr. Elena Rodriguez",
-    role: "HEAD OF SURGERY",
-    image:
-      "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    name: "Dr. Michael Chen",
-    role: "SENIOR PEDIATRICIAN",
-    image:
-      "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    name: "Dr. Sarah Thompson",
-    role: "NEUROLOGY EXPERT",
-    image:
-      "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=900&q=80",
-  },
-
-  // EXTRA DOCTORS
-  {
-    name: "Dr. Emma Watson",
-    role: "ORTHOPEDIC SPECIALIST",
-    image:
-      "https://images.unsplash.com/photo-1651008376811-b90baee60c1f?auto=format&fit=crop&w=900&q=80",
+    name: "Dr. Pradisha Jaiswal",
+    role: "M.P.T. Neurology",
+    image: "/Dr. Pradisha Jaiswal.png",
+    desc: "Dr. Pradisha Jaiswal specializes in Neurological Physiotherapy, focusing on rehabilitation and improving the quality of life for patients with neurological conditions. She is committed to personalized therapy plans that promote recovery, mobility, and overall well-being.",
   },
 ];
 
@@ -216,26 +197,30 @@ function DoctorCard({
       {/* Doctor Icon */}
       <div
         className="
+    relative
+    w-full
+    aspect-[3/4]
+    overflow-hidden
     rounded-2xl
-    h-[420px]
-    bg-white
-    flex
-    items-center
-    justify-center
     border
     border-[#e4ded6]
+    bg-white
     hover:shadow-lg
     transition-all
     duration-500
   "
       >
-        <ShieldPlus
-          className="
-      w-28
-      h-28
-      text-[#4b2d25]
-    "
-          strokeWidth={1}
+        <Image
+          src={doctor.image}
+          alt={doctor.name}
+          fill
+          className="object-cover transition-transform duration-500 hover:scale-105"
+          sizes={
+            carousel
+              ? "(max-width:768px) 320px, 360px"
+              : "(max-width:640px) 100vw, (max-width:1024px) 50vw, 25vw"
+          }
+          priority
         />
       </div>
 

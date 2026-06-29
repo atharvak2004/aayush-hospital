@@ -16,16 +16,16 @@ const quickLinks = [
 
 const hours = [
   {
-    label: "OPD",
-    time: "8AM – 8PM",
+    label: "Morning OPD",
+    time: "10:00 AM – 2:00 PM",
   },
   {
-    label: "Emergency",
-    time: "24 Hours",
+    label: "Evening OPD",
+    time: "6:00 PM – 9:30 PM",
   },
   {
-    label: "Pharmacy",
-    time: "24 Hours",
+    label: "Sunday",
+    time: "Open",
   },
 ];
 
@@ -48,7 +48,7 @@ export default function Footer() {
   return (
     <footer
       className="
-        bg-[#ece8e1]
+        bg-(--brown-deep)
         border-t
         border-[rgba(197,160,89,0.15)]
         overflow-hidden
@@ -73,33 +73,32 @@ export default function Footer() {
             gap-14
             pb-14
             border-b
-            border-[rgba(93,64,55,0.08)]
+            border-white/10
           "
         >
           {/* Brand */}
           <div className="max-w-sm">
             <p
               className="
-                text-[15px]
-                tracking-[4px]
-                uppercase
-                font-bold
-                text-[var(--brown-deep)]
-              "
+    text-[15px]
+    tracking-[4px]
+    uppercase
+    font-bold
+    text-(--gold-muted)
+  "
             >
               Curated Wellness
             </p>
 
             <h3
               className="
-                mt-5
-                text-[42px]
-                leading-[1.05]
-                tracking-[-2px]
-                text-[var(--brown-deep)]
-                font-light
-                font-semibold
-              "
+    mt-5
+    text-[42px]
+    leading-[1.05]
+    tracking-[-2px]
+    text-white
+    font-semibold
+  "
             >
               AAYUSH
               <br />
@@ -111,11 +110,11 @@ export default function Footer() {
 
             <p
               className="
-                mt-6
-                text-[15px]
-                leading-8
-                text-[var(--brown-soft)]
-              "
+    mt-6
+    text-[15px]
+    leading-8
+    text-white/70
+  "
             >
               Delivering compassionate healthcare and advanced
               medical excellence in a sanctuary designed for
@@ -132,20 +131,20 @@ export default function Footer() {
                     key={index}
                     href={item.href}
                     className="
-                      w-11
-                      h-11
-                      rounded-full
-                      border
-                      border-[rgba(93,64,55,0.12)]
-                      flex
-                      items-center
-                      justify-center
-                      text-[var(--brown-soft)]
-                      hover:bg-[var(--gold-muted)]
-                      hover:text-white
-                      hover:-translate-y-1
-                      transition-all
-                    "
+  w-11
+  h-11
+  rounded-full
+  border
+  border-white/15
+  flex
+  items-center
+  justify-center
+  text-white/70
+  hover:bg-(--gold-muted)
+  hover:text-white
+  hover:-translate-y-1
+  transition-all
+"
                   >
                     <Icon
                       size={18}
@@ -161,13 +160,13 @@ export default function Footer() {
           <div>
             <p
               className="
-                uppercase
-                tracking-[4px]
-                text-[13px]
-                font-semibold
-                text-[var(--brown-deep)]
-                mb-7
-              "
+  uppercase
+  tracking-[4px]
+  text-[13px]
+  font-semibold
+  text-white
+  mb-7
+"
             >
               Quick Links
             </p>
@@ -178,11 +177,11 @@ export default function Footer() {
                   <Link
                     href="/"
                     className="
-                      text-[15px]
-                      text-[var(--brown-soft)]
-                      hover:text-[var(--gold-muted)]
-                      transition-colors
-                    "
+  text-[15px]
+  text-white/70
+  hover:text-(--brown-soft)
+  transition-colors
+"
                   >
                     {link}
                   </Link>
@@ -195,15 +194,15 @@ export default function Footer() {
           <div>
             <p
               className="
-                uppercase
-                tracking-[4px]
-                text-[13px]
-                font-semibold
-                text-[var(--brown-deep)]
-                mb-7
-              "
+  uppercase
+  tracking-[4px]
+  text-[13px]
+  font-semibold
+  text-white
+  mb-7
+"
             >
-              Opening Hours
+              OPD Timings
             </p>
 
             <div className="space-y-5">
@@ -215,25 +214,25 @@ export default function Footer() {
                     items-center
                     justify-between
                     border-b
-                    border-[rgba(93,64,55,0.08)]
+                    border-white/10
                     pb-4
                   "
                 >
                   <p
                     className="
-                      text-[15px]
-                      text-[var(--brown-soft)]
-                    "
+  text-[15px]
+  text-white/70
+"
                   >
                     {item.label}
                   </p>
 
                   <p
                     className="
-                      text-[15px]
-                      font-semibold
-                      text-[var(--gold-muted)]
-                    "
+  text-[15px]
+  font-semibold
+  text-(--gold-muted)
+"
                   >
                     {item.time}
                   </p>
@@ -257,9 +256,9 @@ export default function Footer() {
         >
           <p
             className="
-              text-[13px]
-              text-[rgba(93,64,55,0.55)]
-            "
+  text-[13px]
+  text-white/50
+"
           >
             © 2026 AAYUSH HOSPITAL. All Rights Reserved.
           </p>
@@ -279,12 +278,12 @@ export default function Footer() {
               <p
                 key={tag}
                 className="
-                  uppercase
-                  tracking-[3px]
-                  text-[11px]
-                  font-semibold
-                  text-[rgba(93,64,55,0.35)]
-                "
+  uppercase
+  tracking-[3px]
+  text-[11px]
+  font-semibold
+  text-white/30
+"
               >
                 {tag}
               </p>
@@ -298,16 +297,16 @@ export default function Footer() {
             mt-8
             pt-6
             border-t
-            border-[rgba(93,64,55,0.06)]
+            border-white/10
             text-center
           "
         >
           <p
             className="
-    text-[12px]
-    tracking-[1px]
-    text-[rgba(93,64,55,0.45)]
-  "
+  text-[12px]
+  tracking-[1px]
+  text-white/50
+"
           >
             Design & Developed by{" "}
 
@@ -316,12 +315,12 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               className="
-      text-[var(--gold-muted)]
-      font-bold
-      hover:opacity-80
-      transition-all
-      duration-300
-    "
+  text-(--gold-muted)
+  font-bold
+  hover:text-white
+  transition-all
+  duration-300
+"
             >
               PRUSHAL TECH
             </a>

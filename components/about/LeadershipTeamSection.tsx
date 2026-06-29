@@ -5,16 +5,19 @@ import {
   Share2,
   ShieldPlus,
 } from "lucide-react";
+import Image from "next/image";
 
 const leaders = [
   {
     name: "Dr. Umesh Jaiswal",
     role: "M.S. General Surgery",
+    image: "/Dr. Umesh Jaiswal.png",
     desc: "With extensive experience in General Surgery, Dr. Umesh Jaiswal specializes in delivering advanced surgical care with precision and patient-centered treatment approaches. He is dedicated to ensuring safe procedures and effective recovery for every patient.",
   },
   {
     name: "Dr. Pradisha Jaiswal",
     role: "M.P.T. Neurology",
+    image: "/Dr. Pradisha Jaiswal.png",
     desc: "Dr. Pradisha Jaiswal specializes in Neurological Physiotherapy, focusing on rehabilitation and improving the quality of life for patients with neurological conditions. She is committed to personalized therapy plans that promote recovery, mobility, and overall well-being.",
   },
 ];
@@ -67,49 +70,44 @@ export default function LeadershipTeamSection() {
             <div
               key={index}
               className="
-                flex
-                flex-col
-                sm:flex-row
-                items-center
-                sm:items-start
-                text-center
-                sm:text-left
-                gap-6
-                lg:gap-8
-              "
+  flex
+  flex-col
+  md:flex-row
+  items-center
+  md:items-start
+  text-center
+  md:text-left
+  gap-8
+"
             >
 
               {/* Icon/Image Card */}
               <div
                 className="
-                  rounded-2xl
-                  h-36
-                  w-36
-                  md:h-44
-                  md:w-44
-                  lg:h-80
-                  lg:w-52
-                  bg-white
-                  flex
-                  items-center
-                  justify-center
-                  border
-                  border-[#e4ded6]
-                  hover:shadow-lg
-                  transition-all
-                  duration-500
-                  shrink-0
-                "
+    relative
+    w-full
+    sm:w-44
+    md:w-52
+    lg:w-60
+    aspect-[3/4]
+    overflow-hidden
+    rounded-2xl
+    border
+    border-[#e4ded6]
+    bg-white
+    shrink-0
+    hover:shadow-xl
+    transition-all
+    duration-500
+  "
               >
-                <ShieldPlus
-                  className="
-                    w-14
-                    h-14
-                    md:w-20
-                    md:h-20
-                    text-[#4b2d25]
-                  "
-                  strokeWidth={1}
+                <Image
+                  src={leader.image}
+                  alt={leader.name}
+                  fill
+                  className="object-cover transition-transform duration-500 hover:scale-105"
+                  sizes="(max-width:640px) 100vw, (max-width:1024px) 220px, 260px"
+                  priority={index < 2}
                 />
               </div>
 
@@ -156,7 +154,7 @@ export default function LeadershipTeamSection() {
                   {leader.desc}
                 </p>
 
-                <div className="flex justify-center sm:justify-start items-center gap-5 mt-6">
+                {/* <div className="flex justify-center sm:justify-start items-center gap-5 mt-6">
                   <button
                     className="
                       text-[#8d8179]
@@ -176,7 +174,7 @@ export default function LeadershipTeamSection() {
                   >
                     <Share2 size={22} />
                   </button>
-                </div>
+                </div> */}
 
               </div>
             </div>

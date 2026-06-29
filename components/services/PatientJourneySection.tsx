@@ -13,6 +13,11 @@ const steps = [
   },
   {
     number: "03",
+    title: "Treatment",
+    desc: "Receive a personalized treatment plan using advanced therapies tailored to your condition and wellness goals.",
+  },
+  {
+    number: "04",
     title: "Recovery",
     desc: "Personalized care plans designed for rapid healing and lasting health transformations.",
   },
@@ -20,20 +25,19 @@ const steps = [
 
 export default function PatientJourneySection() {
   return (
-    <section className="bg-[#f5f3ee] py-28 overflow-hidden">
-      
-      <div className="max-w-6xl mx-auto px-6 lg:px-10">
-        
+    <section className="bg-[#f5f3ee] py-16 md:py-20 lg:py-28 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-10">
         {/* Heading */}
-        <div className="text-center mb-24">
-          
+        <div className="text-center mb-14 md:mb-20">
           <h2
             className="
               text-(--brown-deep)
-              text-[42px]
-              md:text-[52px]
-              leading-none
-              tracking-[-2px]
+              text-3xl
+              sm:text-4xl
+              md:text-5xl
+              lg:text-[52px]
+              leading-tight
+              tracking-tight
               font-bold
             "
           >
@@ -43,17 +47,16 @@ export default function PatientJourneySection() {
 
         {/* Timeline */}
         <div className="relative">
-          
-          {/* Line */}
+          {/* Desktop Line */}
           <div
             className="
               hidden
               md:block
               absolute
               top-10
-              left-[16.5%]
-              right-[16.5%]
-              h-px
+              left-[12.5%]
+              right-[12.5%]
+              h-[2px]
               bg-[#ddd7cf]
             "
           />
@@ -62,32 +65,38 @@ export default function PatientJourneySection() {
           <div
             className="
               grid
-              md:grid-cols-3
-              gap-16
+              grid-cols-1
+              sm:grid-cols-2
+              lg:grid-cols-4
+              gap-10
+              md:gap-8
+              lg:gap-6
               relative
               z-10
             "
           >
-            
-            {steps.map((step, index) => (
+            {steps.map((step) => (
               <div
-                key={index}
-                className="text-center"
+                key={step.number}
+                className="text-center flex flex-col items-center"
               >
-                
                 {/* Circle */}
                 <div
                   className="
-                    w-20
-                    h-20
+                    w-16
+                    h-16
+                    sm:w-18
+                    sm:h-18
+                    md:w-20
+                    md:h-20
                     rounded-full
                     bg-[#ebe7e1]
                     flex
                     items-center
                     justify-center
-                    mx-auto
                     text-(--brown-deep)
-                    text-[26px]
+                    text-xl
+                    md:text-2xl
                     font-semibold
                     shadow-sm
                   "
@@ -98,12 +107,13 @@ export default function PatientJourneySection() {
                 {/* Title */}
                 <h3
                   className="
-                    mt-8
+                    mt-6
                     text-(--brown-deep)
-                    text-3xl
-                    leading-none
-                    tracking-[-1px]
+                    text-xl
+                    sm:text-2xl
+                    md:text-[28px]
                     font-semibold
+                    leading-tight
                   "
                 >
                   {step.title}
@@ -112,12 +122,12 @@ export default function PatientJourneySection() {
                 {/* Description */}
                 <p
                   className="
-                    mt-5
+                    mt-4
                     text-(--brown-soft)
-                    text-md
-                    leading-[1.9]
-                    max-w-65
-                    mx-auto
+                    text-sm
+                    sm:text-base
+                    leading-7
+                    max-w-[260px]
                   "
                 >
                   {step.desc}

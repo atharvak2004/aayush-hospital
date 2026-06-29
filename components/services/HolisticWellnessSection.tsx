@@ -77,7 +77,7 @@ export default function HolisticWellnessSection() {
                 font-bold
               "
             >
-              Holistic Wellness Centers
+              Wholistic Wellness Centers
             </h2>
 
             {/* Description */}

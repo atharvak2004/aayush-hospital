@@ -26,7 +26,7 @@ const services = [
   },
   {
     icon: Cross,
-    label: "Pharmacy",
+    label: "Hospitalization",
   },
 ];
 
@@ -59,12 +59,15 @@ export default function HeroSection() {
             px-4
             sm:px-6
             md:px-10
-            lg:px-16
+            lg:px-0
             pt-28
             sm:pt-32
             md:pt-36
             pb-28
             sm:pb-32
+            lg:max-w-[1280px]
+            lg:mx-auto
+            lg:w-full
           "
         >
           {/* GLASS CARD */}
@@ -73,10 +76,10 @@ export default function HeroSection() {
               w-full
               max-w-full
               sm:max-w-[620px]
-              lg:max-w-[680px]
+              lg:max-w-[780px]
               bg-white/20
               backdrop-blur-md
-              rounded-[24px]
+              rounded-3xl
               border border-white/20
               shadow-2xl
               p-6
@@ -86,55 +89,46 @@ export default function HeroSection() {
             "
           >
             {/* TOP TEXT */}
-           <p
-  className="
-    text-[28px]
-    sm:text-[34px]
-    md:text-[38px]
-    font-light
-    text-[#4b2d25]
-    leading-none
-    tracking-[-1px]
-  "
->
-  <CountUp
-    end={10}
-    duration={3}
-    enableScrollSpy
-    scrollSpyOnce
-  />
-  + Years of
-</p>
+            <p
+              className="
+                text-[28px]
+                sm:text-[34px]
+                md:text-[38px]
+                font-light
+                text-[#4b2d25]
+                leading-none
+                tracking-[-1px]
+              "
+            >
+              <CountUp
+                end={15}
+                duration={3}
+                enableScrollSpy
+                scrollSpyOnce
+              />
+              + Years of
+            </p>
 
             {/* MAIN HEADING */}
             <h1
               className="
-    mt-4
-    text-[52px]
-    xs:text-[58px]
-    sm:text-[72px]
-    md:text-[82px]
-    lg:text-[92px]
-    leading-[0.9]
-    tracking-[-2px]
-    sm:tracking-[-3px]
-    text-(--brown-deep)
-  "
+                mt-4
+                text-[52px]
+                xs:text-[58px]
+                sm:text-[72px]
+                md:text-[82px]
+                lg:text-[76px]
+                leading-[0.9]
+                tracking-[-2px]
+                sm:tracking-[-3px]
+                text-(--brown-deep)
+              "
             >
               <span
                 className="font-semibold"
                 style={{ fontFamily: "var(--font-manrope)" }}
               >
-                Trusted
-              </span>
-
-              <br />
-
-              <span
-                className="font-semibold"
-                style={{ fontFamily: "var(--font-manrope)" }}
-              >
-                Healthcare
+                Trusted Healthcare
               </span>
 
               <br />
@@ -175,47 +169,21 @@ export default function HeroSection() {
             >
               {/* BUTTON 1 */}
               <a
-  href="https://wa.me/919970766313?text=Hello%20AAYUSH%20Hospital,%20I%20would%20like%20to%20book%20an%20appointment."
-  target="_blank"
-  rel="noopener noreferrer"
-  className="
-    w-full
-    sm:w-auto
-    min-w-[220px]
-    inline-flex
-    items-center
-    justify-center
-    gap-2
-    bg-[#5a3a32]
-    hover:bg-[#4a2f29]
-    text-white
-    px-8
-    py-4
-    rounded-full
-    text-[12px]
-    sm:text-[13px]
-    tracking-[2px]
-    font-semibold
-    transition-all
-    duration-300
-    whitespace-nowrap
-    cursor-pointer
-  "
->
-  <FaWhatsapp size={18} />
-  BOOK APPOINTMENT
-</a>
-
-              {/* BUTTON 2 */}
-              <Link href="/services">
-                <button
-                  className="
+                href="https://wa.me/919970766313?text=Hello%20AAYUSH%20Hospital,%20I%20would%20like%20to%20book%20an%20appointment."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
                   w-full
                   sm:w-auto
                   min-w-[220px]
-                  bg-[#f2f0ed]
-                  hover:bg-white
-                  text-[#3f2a24]
+                  lg:min-w-[320px]
+                  inline-flex
+                  items-center
+                  justify-center
+                  gap-2
+                  bg-[#5a3a32]
+                  hover:bg-[#4a2f29]
+                  text-white
                   px-8
                   py-4
                   rounded-full
@@ -228,6 +196,34 @@ export default function HeroSection() {
                   whitespace-nowrap
                   cursor-pointer
                 "
+              >
+                <FaWhatsapp size={18} />
+                BOOK APPOINTMENT
+              </a>
+
+              {/* BUTTON 2 */}
+              <Link href="/services">
+                <button
+                  className="
+                    w-full
+                    sm:w-auto
+                    min-w-[220px]
+                    lg:min-w-[320px]
+                    bg-[#f2f0ed]
+                    hover:bg-white
+                    text-[#3f2a24]
+                    px-8
+                    py-4
+                    rounded-full
+                    text-[12px]
+                    sm:text-[13px]
+                    tracking-[2px]
+                    font-semibold
+                    transition-all
+                    duration-300
+                    whitespace-nowrap
+                    cursor-pointer
+                  "
                 >
                   EXPLORE SERVICES
                 </button>
@@ -244,17 +240,21 @@ export default function HeroSection() {
             px-4
             sm:px-6
             md:px-8
+            lg:px-0
             pb-6
             sm:pb-10
+            lg:max-w-[1280px]
+            lg:mx-auto
+            lg:w-full
           "
         >
           <div
             className="
-    grid
-    grid-cols-2
-    lg:grid-cols-4
-    gap-4
-  "
+              grid
+              grid-cols-2
+              lg:grid-cols-4
+              gap-4
+            "
           >
             {services.map((service, index) => {
               const Icon = service.icon;
@@ -263,7 +263,8 @@ export default function HeroSection() {
                 <div
                   key={index}
                   className="
-                    bg-[#f7f5f3]
+                  bg-white/20
+                    backdrop-blur-md
                     rounded-2xl
                     h-[120px]
                     sm:h-[135px]

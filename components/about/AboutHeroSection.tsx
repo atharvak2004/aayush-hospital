@@ -85,7 +85,7 @@ export default function AboutHeroSection() {
       "
                 >
                   <CountUp
-                    end={10}
+                    end={15}
                     duration={3}
                     enableScrollSpy
                     scrollSpyOnce

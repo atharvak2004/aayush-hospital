@@ -6,52 +6,72 @@ import {
   Brain,
   Baby,
   ScanSearch,
+  Scissors,
+  Activity,
+  Bone,
+  Leaf,
+  ShieldPlus,
+  Accessibility,
 } from "lucide-react";
+import Image from "next/image";
 
 const departments = [
   {
-    icon: Stethoscope,
+    image: "/general mediciene.png",
     title: "General Medicine",
-    desc: "Comprehensive preventative and acute care for patients of all ages, focused on long-term vitality.",
+    desc: "Comprehensive diagnosis, treatment, and preventive healthcare for patients of all ages.",
+  },
+  {
+    image: "/Laparoscopic Surgery.png",
+    title: "General & Laparoscopic Surgery",
+    desc: "Advanced surgical care using minimally invasive techniques for faster recovery and better outcomes.",
+  },
+  {
+    image: "/Advanced Physiotherapy.png",
+    title: "Advanced Physiotherapy & Rehabilitation",
+    desc: "Personalized rehabilitation programs to restore mobility, strength, and overall physical function.",
     large: true,
   },
   {
-    icon: Syringe,
-    title: "Advanced Surgery",
-    desc: "Minimally invasive techniques for faster recovery and precise outcomes.",
-  },
-  {
-    icon: Baby,
-    title: "Pediatrics",
-    desc: "Expert, gentle care for your little ones in a kid-friendly environment.",
-  },
-  {
-    icon: HeartPulse,
-    title: "Cardiology",
-    desc: "Comprehensive heart health management and rhythm diagnostic services.",
-  },
-  {
-    icon: Brain,
-    title: "Neurology",
-    desc: "Advanced brain mapping and treatment for complex neurological conditions using next-gen neuroimaging.",
+    image: "/Pain Management.png",
+    title: "DSCB Injections & Pain Management",
+    desc: "Targeted pain relief solutions and injection therapies for chronic musculoskeletal and spine conditions.",
     large: true,
   },
   {
-    icon: ScanSearch,
-    title: "Radiology",
-    desc: "High-precision digital imaging for accurate and fast diagnostics.",
+    image: "/Medical Orthopaedics.png",
+    title: "Medical Orthopaedics",
+    desc: "Expert diagnosis and treatment of bone, joint, muscle, and ligament disorders.",
+  },
+  {
+    image: "/Ozone Therapy.png",
+    title: "Ozone Therapy",
+    desc: "Innovative ozone-based treatments designed to support healing, reduce inflammation, and improve recovery.",
+  },
+  {
+    image: "/Preventive Healthcare.png",
+    title: "Preventive Healthcare",
+    desc: "Routine health screenings, wellness assessments, and preventive care for long-term health.",
+    large: true,
+  },
+  {
+    image: "/Non-Surgical Spine Recovery.png",
+    title: "Advanced Non-Surgical Spine Recovery Program",
+    desc: "Comprehensive non-surgical treatments and rehabilitation plans for lasting spine health and pain relief.",
+    large: true,
   },
 ];
+
 
 export default function ClinicalDepartmentsSection() {
   return (
     <section className="bg-[#f5f3ee] py-24 overflow-hidden">
-      
+
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        
+
         {/* Header */}
         <div className="mb-14">
-          
+
           <h2
             className="
               text-(--brown-deep)
@@ -85,7 +105,7 @@ export default function ClinicalDepartmentsSection() {
             gap-5
           "
         >
-          
+
           {departments.map((item, index) => {
             const Icon = item.icon;
 
@@ -100,31 +120,28 @@ export default function ClinicalDepartmentsSection() {
                   p-8
                   hover:-translate-y-1
                   transition-all
-                  ${
-                    item.large
-                      ? "md:col-span-6"
-                      : "md:col-span-3"
+                  text-center
+                  ${item.large
+                    ? "md:col-span-6"
+                    : "md:col-span-3"
                   }
                 `}
               >
-                
-                {/* Icon */}
+
                 <div
-                  className="
-                    w-12
-                    h-12
-                    rounded-xl
-                    bg-[#f6e3dc]
-                    flex
-                    items-center
-                    justify-center
-                    mb-8
-                  "
+                  className={`
+        relative
+        h-72
+        rounded-2xl
+        overflow-hidden
+        mb-8
+    `}
                 >
-                  <Icon
-                    size={22}
-                    strokeWidth={1.8}
-                    className="text-[#5b342b]"
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover transition-transform duration-500 hover:scale-105"
                   />
                 </div>
 

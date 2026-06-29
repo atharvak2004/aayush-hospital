@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import { Eye, Clock3, ArrowRight } from "lucide-react";
 
@@ -78,7 +78,7 @@ export default function MissionVisionSection() {
             </p>
 
             {/* Link */}
-            <button
+            {/* <button
               className="
                 mt-10
                 flex
@@ -94,7 +94,7 @@ export default function MissionVisionSection() {
               Learn about our process
 
               <ArrowRight size={18} />
-            </button>
+            </button> */}
           </div>
 
           {/* Vision Card */}
@@ -159,7 +159,7 @@ export default function MissionVisionSection() {
             </p>
 
             {/* Link */}
-            <button
+            {/* <button
               className="
                 mt-10
                 flex
@@ -175,7 +175,7 @@ export default function MissionVisionSection() {
               View our future goals
 
               <ArrowRight size={18} />
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

@@ -53,7 +53,7 @@ export default function AboutSection() {
               "
             >
               <h3 className="text-5xl font-bold leading-none">
-                10+
+                15+
               </h3>
 
               <p
@@ -110,6 +110,7 @@ export default function AboutSection() {
                 text-(--brown-soft)
                 text-md
                 leading-loose
+                
               "
             >
               Founded on the principles of integrity and excellence,
@@ -140,7 +141,132 @@ export default function AboutSection() {
             </Link>
           </div>
         </div>
+        {/* SECOND SECTION - REVERSE LAYOUT */}
+        <div className="grid lg:grid-cols-2 gap-20 items-center mt-32">
+
+          {/* LEFT SIDE CONTENT */}
+          <div className="max-w-155 lg:order-1">
+
+            <p
+              className="
+        uppercase
+        tracking-[4px]
+        text-(--eyebrow)
+        text-[14px]
+        font-semibold
+        mb-4
+      "
+            >
+              Our Heritage
+            </p>
+
+            <h2
+              className="
+        text-[50px]
+        leading-[1.05]
+        tracking-[-2px]
+        text-(--brown-deep)
+        font-bold
+      "
+            >
+              Modern Care
+              <br />
+              With A Human Touch
+            </h2>
+
+            <p
+              className="
+        mt-10
+        text-(--brown-soft)
+        text-md
+        leading-loose
+      "
+            >
+              At Aayush Hospital, we combine advanced medical technology with
+              compassionate patient care. Our multidisciplinary team works
+              together to ensure every patient receives personalized treatment,
+              comfort, and support throughout their healthcare journey.
+            </p>
+
+            <Link href="/services">
+              <button
+                className="
+          mt-10
+          text-(--brown-deep)
+          font-semibold
+          text-[18px]
+          border-b-2
+          border-[#cba65a]
+          pb-1
+          hover:opacity-80
+          transition-all
+          cursor-pointer
+        "
+              >
+                Explore Our Services
+              </button>
+            </Link>
+          </div>
+
+          {/* RIGHT SIDE IMAGE */}
+          <div className="relative lg:order-2">
+
+            <div className="absolute -top-2 -right-8 w-28 h-28 rounded-full border border-[#d8c7a2] z-0" />
+
+            <div
+              className="
+        relative
+        rounded-4xl
+        overflow-hidden
+        w-full
+        max-w-140
+        h-162.5
+        ml-auto
+        z-10
+      "
+            >
+              <Image
+                src="/Advanced Physiotherapy.png"
+                alt="Medical Team"
+                fill
+                className="object-cover"
+              />
+            </div>
+
+            <div
+              className="
+        absolute
+        -bottom-4
+        -left-4
+        bg-[#5b342b]
+        text-white
+        rounded-2xl
+        px-8
+        py-7
+        shadow-2xl
+        z-20
+      "
+            >
+              <h3 className="text-5xl font-bold leading-none">
+                25K+
+              </h3>
+
+              <p
+                className="
+          text-[11px]
+          uppercase
+          tracking-[2px]
+          mt-2
+          text-white/80
+        "
+              >
+                Happy Patients
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
+
     </section>
   );
 }

@@ -3,6 +3,7 @@
 import { Search } from "lucide-react";
 import { useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
+import Image from "next/image";
 const categories = [
   "All Departments",
   "Cardiology",
@@ -20,22 +21,17 @@ const doctors = [
     name: "Dr. Umesh Jaiswal",
     role: "M.S. General Surgery",
     category: "General Surgery",
+    image: "/Dr. Umesh Jaiswal.png",
     desc: "Specialized in advanced surgical care with a focus on precision, safety, and patient recovery.",
   },
   {
     name: "Dr. Pradisha Jaiswal",
     role: "M.P.T. Neurology",
     category: "Neurology",
+    image: "/Dr. Pradisha Jaiswal.png",
     desc: "Focused on neurological rehabilitation, mobility improvement, and personalized patient care.",
   },
-  {
-    name: "Dr. Jonathan Aris",
-    role: "LEAD SURGEON",
-    category: "Orthopedics",
-    desc: "Advancing the art of surgery through minimal intervention and maximal attention to patient well-being.",
-    image:
-      "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=900&q=80",
-  },
+
 ];
 
 export default function DoctorsGridSection() {
@@ -187,29 +183,26 @@ export default function DoctorsGridSection() {
 
                 <div
                   className="
-      rounded-2xl
-      h-[320px]
-      md:h-[360px]
-      bg-white
-      flex
-      items-center
-      justify-center
-      border
-      border-[#e4ded6]
-      hover:shadow-lg
-      transition-all
-      duration-500
-    "
+    relative
+    w-full
+    aspect-[3/4]
+    overflow-hidden
+    rounded-2xl
+    border
+    border-[#e4ded6]
+    bg-white
+    hover:shadow-lg
+    transition-all
+    duration-500
+  "
                 >
-                  <ShieldPlus
-                    className="
-        w-24
-        h-24
-        md:w-28
-        md:h-28
-        text-[#4b2d25]
-      "
-                    strokeWidth={1}
+                  <Image
+                    src={doctor.image}
+                    alt={doctor.name}
+                    fill
+                    className="object-cover transition-transform duration-500 hover:scale-105"
+                    sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw"
+                    priority={index < 2}
                   />
                 </div>
 

@@ -8,8 +8,8 @@ export default function About() {
     <main className="min-h-screen">
       <AboutHeroSection />
       <MissionVisionSection />
-      <LeadershipTeamSection />
       <CorePrinciplesSection />
+      <LeadershipTeamSection />
     </main>
   );
 }
