@@ -13,7 +13,9 @@ export default function DashboardLayout({
   const [checking, setChecking] = useState(true);
 
   useEffect(() => {
-    const token = localStorage.getItem("admin_token");
+    if (typeof globalThis === "undefined") return;
+
+    const token = (globalThis as any).localStorage?.getItem("admin_token");
 
     if (!token) {
       router.replace("/admin/login");
@@ -26,9 +28,9 @@ export default function DashboardLayout({
       },
     })
       .then((res) => res.json())
-      .then((data) => {
-        if (!data.success) {
-          localStorage.removeItem("admin_token");
+      .then((data: any) => {
+        if (!data?.success) {
+          (globalThis as any).localStorage?.removeItem("admin_token");
           router.replace("/admin/login");
         } else {
           setChecking(false);

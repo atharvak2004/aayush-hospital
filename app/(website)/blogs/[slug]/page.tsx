@@ -24,20 +24,27 @@ interface Blog {
 
 async function getBlog(slug: string): Promise<Blog | null> {
   try {
+    const decodedSlug = decodeURIComponent(slug);
+
     const res = await fetch(
-      `http://localhost:3000/api/blogs/${encodeURIComponent(slug)}`,
+      `${process.env.NEXT_PUBLIC_APP_URL}/api/blogs/${encodeURIComponent(decodedSlug)}`,
       {
         cache: "no-store",
       }
     );
 
-    if (!res.ok) return null;
+    if (!res.ok) {
+      // console.log("API Status:", res.status);
+      return null;
+    }
 
-    const data = (await res.json()) as { blog?: Blog | null };
+    const data = await res.json();
+
+    // console.log("Fetched Blog:", data);
 
     return data.blog ?? null;
   } catch (err) {
-    console.error("GET BLOG ERROR:", err);
+    // console.error(err);
     return null;
   }
 }
@@ -135,33 +142,33 @@ export default async function BlogPage({
 
         {/* Meta */}
         <div className="mt-10 flex flex-wrap items-center justify-center gap-6 text-[#8D6E63]">
-  {blog.author && (
-    <div className="flex items-center gap-2 text-sm">
-      <User size={18} strokeWidth={1.8} className="text-[#A6783D]" />
-      <span>{blog.author}</span>
-    </div>
-  )}
+          {blog.author && (
+            <div className="flex items-center gap-2 text-sm">
+              <User size={18} strokeWidth={1.8} className="text-[#A6783D]" />
+              <span>{blog.author}</span>
+            </div>
+          )}
 
-  <div className="flex items-center gap-2 text-sm">
-    <CalendarDays
-      size={18}
-      strokeWidth={1.8}
-      className="text-[#A6783D]"
-    />
-    <span>
-      {new Date(blog.published_at).toLocaleDateString("en-IN", {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-      })}
-    </span>
-  </div>
+          <div className="flex items-center gap-2 text-sm">
+            <CalendarDays
+              size={18}
+              strokeWidth={1.8}
+              className="text-[#A6783D]"
+            />
+            <span>
+              {new Date(blog.published_at).toLocaleDateString("en-IN", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              })}
+            </span>
+          </div>
 
-  <div className="flex items-center gap-2 text-sm">
-    <Clock3 size={18} strokeWidth={1.8} className="text-[#A6783D]" />
-    <span>{blog.reading_time} min read</span>
-  </div>
-</div>
+          <div className="flex items-center gap-2 text-sm">
+            <Clock3 size={18} strokeWidth={1.8} className="text-[#A6783D]" />
+            <span>{blog.reading_time} min read</span>
+          </div>
+        </div>
 
         {/* Hero Image */}
         {blog.thumbnail && (
@@ -171,7 +178,7 @@ export default async function BlogPage({
               relative
               w-full
               max-w-4xl
-              aspect-[16/9]
+              aspect-video
               rounded-[30px]
               overflow-hidden
               shadow-xl

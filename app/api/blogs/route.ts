@@ -46,7 +46,7 @@ export async function GET() {
 
     return NextResponse.json({ success: true, blogs: rows });
   } catch (error) {
-    console.error("GET BLOGS ERROR:", error);
+    // console.error("GET BLOGS ERROR:", error);
     return NextResponse.json(
       {
         success: false,
@@ -65,30 +65,21 @@ export async function POST(req: NextRequest) {
   try {
     await ensureDatabase();
 
-    console.log("========== REQUEST ==========");
-    console.log("Method:", req.method);
-    console.log("Content-Type:", req.headers.get("content-type"));
-
     const formData = await req.formData();
 
     const data: Record<string, string> = {};
     let thumbnailFile: File | null = null;
-
-    console.log("========== FORM DATA ==========");
 
     for (const [rawKey, value] of formData.entries()) {
       // Normalize key
       const key = rawKey.trim();
 
       if (typeof value === "string") {
-        console.log(`${key.padEnd(20)} ${value}`);
+        // console.log(`${key.padEnd(20)} ${value}`);
 
         // Store WITHOUT spaces
         data[key] = value;
       } else {
-        console.log(
-          `${key.padEnd(20)} FILE -> ${value.name} (${value.size} bytes)`
-        );
 
         if (key === "thumbnail") {
           thumbnailFile = value;
@@ -96,8 +87,6 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    console.log("========== DATA ==========");
-    console.log(data);
 
     const title = data.title?.trim() ?? "";
     const slug = data.slug?.trim() ?? "";
@@ -123,22 +112,6 @@ export async function POST(req: NextRequest) {
     const author_id = data.author_id
       ? Number(data.author_id)
       : null;
-
-    console.log("========== PARSED ==========");
-    console.log({
-      title,
-      slug,
-      excerpt,
-      contentLength: content.length,
-      meta_title,
-      keywords,
-      featured,
-      status,
-      reading_time,
-      category_id,
-      author_id,
-      thumbnail: thumbnailFile?.name,
-    });
 
     if (!title || !slug || !content) {
       return NextResponse.json(
@@ -219,7 +192,7 @@ export async function POST(req: NextRequest) {
       thumbnail,
     });
   } catch (error) {
-    console.error("CREATE BLOG ERROR:", error);
+    // console.error("CREATE BLOG ERROR:", error);
 
     return NextResponse.json(
       {

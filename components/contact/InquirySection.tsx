@@ -65,7 +65,7 @@ export default function InquirySection() {
 
     } catch (error) {
 
-      console.error(error);
+      // console.error(error);
 
       toast.error("Something went wrong");
 

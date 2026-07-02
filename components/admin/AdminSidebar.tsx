@@ -79,7 +79,7 @@ export default function AdminSidebar() {
             localStorage.removeItem("admin_token");
             router.replace("/admin/login");
         } catch (err) {
-            console.error(err);
+            // console.error(err);
         }
     }
     return (

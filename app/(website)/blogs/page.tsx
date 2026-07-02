@@ -15,7 +15,7 @@ export default function BlogsPage() {
         const data = await res.json();
         setBlogs(data.blogs ?? []);
       } catch (err) {
-        console.error(err);
+        // console.error(err);
       } finally {
         setLoading(false);
       }
@@ -71,7 +71,7 @@ export default function BlogsPage() {
                 key={i}
                 className="
                   bg-[#fbfaf8]
-                  rounded-[24px]
+                  rounded-3xl
                   border border-[#eee9e2]
                   overflow-hidden
                 "

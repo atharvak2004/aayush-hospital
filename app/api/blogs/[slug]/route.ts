@@ -48,7 +48,7 @@ export async function GET(
       blog: rows[0],
     });
   } catch (error) {
-    console.error("GET BLOG ERROR:", error);
+    // console.error("GET BLOG ERROR:", error);
 
     return NextResponse.json(
       {
@@ -162,7 +162,7 @@ export async function PUT(
       message: "Blog updated successfully",
     });
   } catch (error) {
-    console.error("UPDATE BLOG ERROR:", error);
+    // console.error("UPDATE BLOG ERROR:", error);
 
     return NextResponse.json(
       {
@@ -209,7 +209,7 @@ export async function DELETE(
       message: "Blog deleted successfully",
     });
   } catch (error) {
-    console.error("DELETE BLOG ERROR:", error);
+    // console.error("DELETE BLOG ERROR:", error);
 
     return NextResponse.json(
       {

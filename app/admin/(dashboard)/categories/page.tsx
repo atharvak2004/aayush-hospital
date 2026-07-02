@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import type { ChangeEvent } from "react";
 
 interface Category {
   id: number;
@@ -22,7 +23,7 @@ export default function CategoriesAdminPage() {
 
   async function load() {
     const res = await fetch("/api/categories");
-    const data = await res.json();
+    const data = await res.json() as { success: boolean; categories: Category[] };
     if (data.success) setCategories(data.categories);
   }
 
@@ -47,10 +48,10 @@ export default function CategoriesAdminPage() {
       }
     );
 
-    const data = await res.json();
+    const data = await res.json() as { success: boolean; message?: string };
     setLoading(false);
 
-    if (!data.success) return setError(data.message);
+    if (!data.success) return setError(data.message ?? "An error occurred.");
 
     setName(""); setSlug(""); setEditId(null);
     load();
@@ -69,7 +70,14 @@ export default function CategoriesAdminPage() {
   }
 
   async function handleDelete(id: number) {
-    if (!confirm("Delete this category? Blogs using it will have no category.")) return;
+    const confirmed = typeof (globalThis as any).confirm === "function"
+      ? (globalThis as any).confirm("Delete this category? Blogs using it will have no category.")
+      : true;
+
+    if (!confirmed) {
+      return;
+    }
+
     await fetch(`/api/categories/${id}`, { method: "DELETE" });
     load();
   }

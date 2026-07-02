@@ -96,7 +96,7 @@ export default function Navbar() {
             >
                 <div
                     className="
-                        max-w-[1400px]
+                        max-w-350
                         mx-auto
                         px-5
                         sm:px-6
@@ -110,7 +110,7 @@ export default function Navbar() {
                             items-center
                             justify-between
                             h-20
-                            z-[100000]
+                            z-100000
                         "
                     >
                         {/* LOGO */}
@@ -143,7 +143,7 @@ export default function Navbar() {
       lg:text-[26px]
       font-bold
       tracking-[-1px]
-      text-[var(--brown-deep)]
+      text-(--brown-deep)
       uppercase
       leading-none
     "
@@ -179,8 +179,8 @@ export default function Navbar() {
                                             transition-all
                                             duration-300
                                             ${isActive
-                                                ? 'text-[var(--brown-deep)]'
-                                                : 'text-[var(--brown-soft)] hover:text-[var(--brown-deep)]'
+                                                ? 'text-(--brown-deep)'
+                                                : 'text-(--brown-soft) hover:text-(--brown-deep)'
                                             }
                                         `}
                                     >
@@ -191,8 +191,8 @@ export default function Navbar() {
                                                 absolute
                                                 left-0
                                                 -bottom-1
-                                                h-[2px]
-                                                bg-[var(--brown-deep)]
+                                                h-0.5
+                                                bg-(--brown-deep)
                                                 transition-all
                                                 duration-300
                                                 ${isActive
@@ -213,7 +213,7 @@ export default function Navbar() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="
-      bg-[var(--brown-deep)]
+      bg-(--brown-deep)
       hover:opacity-90
       text-white
       px-8
@@ -256,7 +256,7 @@ export default function Navbar() {
         shadow-lg
         border
         border-gray-200
-        z-[100002]
+        z-100002
         cursor-pointer
         touch-manipulation
     "
@@ -268,7 +268,7 @@ export default function Navbar() {
                                         absolute
                                         left-0
                                         w-5
-                                        h-[2px]
+                                        h-0.5
                                         rounded-full
                                         bg-black
                                         transition-all
@@ -287,7 +287,7 @@ export default function Navbar() {
                                         left-0
                                         top-2
                                         w-5
-                                        h-[2px]
+                                        h-0.5
                                         rounded-full
                                         bg-black
                                         transition-all
@@ -305,7 +305,7 @@ export default function Navbar() {
                                         absolute
                                         left-0
                                         w-5
-                                        h-[2px]
+                                        h-0.5
                                         rounded-full
                                         bg-black
                                         transition-all
@@ -332,7 +332,7 @@ export default function Navbar() {
                     inset-0
                     bg-black/40
                     backdrop-blur-sm
-                    z-[99990]
+                    z-99990
                     transition-all
                     duration-300
                     lg:hidden
@@ -351,9 +351,9 @@ export default function Navbar() {
                     right-0
                     h-screen
                     w-[85%]
-                    max-w-[360px]
+                    max-w-90
                     bg-[#f8f5f1]
-                    z-[99991]
+                    z-99991
                     shadow-2xl
                     transition-transform
                     duration-500
@@ -383,7 +383,7 @@ export default function Navbar() {
                                 text-[24px]
                                 font-bold
                                 tracking-[-1px]
-                                text-[var(--brown-deep)]
+                                text-(--brown-deep)
                             "
                         >
                             AAYUSH
@@ -463,8 +463,8 @@ export default function Navbar() {
                                         transition-all
                                         duration-300
                                         ${isActive
-                                            ? 'text-[var(--brown-deep)]'
-                                            : 'text-[var(--brown-soft)]'
+                                            ? 'text-(--brown-deep)'
+                                            : 'text-(--brown-soft)'
                                         }
                                     `}
                                 >
@@ -491,7 +491,7 @@ export default function Navbar() {
     items-center
     justify-center
     gap-2
-    bg-[var(--brown-deep)]
+    bg-(--brown-deep)
     hover:opacity-90
     text-white
     py-4

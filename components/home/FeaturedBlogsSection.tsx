@@ -33,7 +33,7 @@ export default function FeaturedBlogsSection() {
 
         setBlogs(featured);
       } catch (error) {
-        console.error(error);
+        // console.error(error);
       } finally {
         setLoading(false);
       }

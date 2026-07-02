@@ -41,11 +41,10 @@ function ToolbarBtn({
       type="button"
       title={title}
       onClick={onClick}
-      className={`px-2.5 py-1 rounded border text-sm transition-colors ${
-        active
+      className={`px-2.5 py-1 rounded border text-sm transition-colors ${active
           ? "bg-blue-600 text-white border-blue-600"
           : "bg-white hover:bg-gray-100 border-gray-200 text-gray-700"
-      }`}
+        }`}
     >
       {children}
     </button>
@@ -97,9 +96,11 @@ export default function RichTextEditor({ value, onChange }: RichTextEditorProps)
     if (!editor || !value) return;
     // Only set if content actually differs to avoid cursor jumping
     if (editor.getHTML() !== value) {
-      editor.commands.setContent(value, false);
+      editor.commands.setContent(value, {
+        emitUpdate: false,
+      });
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);          // intentionally omit `editor` — only run when value prop changes
 
   async function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
@@ -119,7 +120,7 @@ export default function RichTextEditor({ value, onChange }: RichTextEditorProps)
         alert("Image upload failed");
       }
     } catch (err) {
-      console.error(err);
+      // console.error(err);
       alert("Image upload failed");
     }
 
@@ -279,7 +280,7 @@ export default function RichTextEditor({ value, onChange }: RichTextEditorProps)
       <EditorContent
         editor={editor}
         className="
-          prose prose-sm max-w-none p-4 min-h-[320px]
+          prose prose-sm max-w-none p-4 min-h-80
           [&_.ProseMirror]:outline-none
           [&_.ProseMirror_img]:rounded-lg
           [&_.ProseMirror_img]:my-4

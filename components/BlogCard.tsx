@@ -31,7 +31,7 @@ export default function BlogCard({ blog }: { blog: Blog }) {
           h-full
           bg-[#fbfaf8]
           border border-[#eee9e2]
-          rounded-[24px]
+          rounded-3xl
           p-6
           transition-all
           duration-300
@@ -50,7 +50,7 @@ export default function BlogCard({ blog }: { blog: Blog }) {
               className="object-cover transition-transform duration-700 group-hover:scale-105"
             />
           ) : (
-            <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#efe6da] to-[#f8f5f1]">
+            <div className="flex h-full w-full items-center justify-center bg-linear-to-br from-[#efe6da] to-[#f8f5f1]">
               <div className="flex flex-col items-center gap-3 text-[#8D6E63]">
                 <FileText size={48} strokeWidth={1.5} />
                 <span className="text-sm font-medium">
@@ -60,7 +60,7 @@ export default function BlogCard({ blog }: { blog: Blog }) {
             </div>
           )}
 
-          {blog.featured === 1 && (
+          {blog.featured && (
             <span className="absolute left-4 top-4 rounded-full bg-white/90 px-4 py-1.5 text-xs font-semibold text-[#5D4037] shadow backdrop-blur">
               Featured
             </span>
@@ -96,7 +96,7 @@ export default function BlogCard({ blog }: { blog: Blog }) {
   <p
     className="
       mt-5
-      min-h-[3.5rem]
+      min-h-14
       line-clamp-2
       text-[15px]
       leading-7

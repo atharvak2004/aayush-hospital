@@ -1,4 +1,4 @@
-// app/page.js
+// app/(website)/page.js
 
 import AayushAdvantageSection from '@/components/home/aayushAdvantageSection';
 import AboutSection from '@/components/home/aboutSection';

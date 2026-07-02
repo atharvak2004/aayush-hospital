@@ -14,13 +14,13 @@ export default function BlogAdminPage() {
         try {
             const data = await getBlogs();
 
-            console.log(data);
+            // console.log(data);
 
             if (data.success) {
                 setBlogs(data.blogs);
             }
         } catch (err) {
-            console.log(err);
+            // console.log(err);
         }
     }
 
