@@ -222,11 +222,7 @@ export default function GetInTouchSection() {
       },
       {
         icon: FaInstagram,
-        href: "#",
-      },
-      {
-        icon: FaLinkedinIn,
-        href: "#",
+        href: "https://www.instagram.com/aayushhospital_pune/",
       },
     ].map((item, index) => {
       const Icon = item.icon;

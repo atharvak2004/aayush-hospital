@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
+
 import {
-  Globe,
-  Share2,
-  Heart,
-} from "lucide-react";
+  FaWhatsapp,
+  FaInstagram,
+} from "react-icons/fa";
 
 const quickLinks = [
   "Home",
@@ -31,16 +31,14 @@ const hours = [
 
 const socials = [
   {
-    icon: Globe,
-    href: "#",
+    icon: FaWhatsapp,
+    href: "https://wa.me/919970766313",
+    label: "WhatsApp",
   },
   {
-    icon: Share2,
-    href: "#",
-  },
-  {
-    icon: Heart,
-    href: "#",
+    icon: FaInstagram,
+    href: "https://www.instagram.com/aayushhospital_pune/",
+    label: "Instagram",
   },
 ];
 
@@ -123,33 +121,34 @@ export default function Footer() {
 
             {/* Socials */}
             <div className="flex items-center gap-3 mt-8">
-              {socials.map((item, index) => {
+              {socials.map((item) => {
                 const Icon = item.icon;
 
                 return (
                   <a
-                    key={index}
+                    key={item.label}
                     href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={item.label}
                     className="
-  w-11
-  h-11
-  rounded-full
-  border
-  border-white/15
-  flex
-  items-center
-  justify-center
-  text-white/70
-  hover:bg-(--gold-muted)
-  hover:text-white
-  hover:-translate-y-1
-  transition-all
-"
+          w-11
+          h-11
+          rounded-full
+          border
+          border-white/15
+          flex
+          items-center
+          justify-center
+          text-white/70
+          hover:bg-(--gold-muted)
+          hover:text-white
+          hover:-translate-y-1
+          transition-all
+          duration-300
+        "
                   >
-                    <Icon
-                      size={18}
-                      strokeWidth={1.8}
-                    />
+                    <Icon size={18} />
                   </a>
                 );
               })}
