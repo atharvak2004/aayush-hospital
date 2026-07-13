@@ -101,7 +101,7 @@ export default function GetInTouchSection() {
                     >
                       Aayush Hospital and Aayush advanced Physiotherapy Clinic, 
                       <br />
-                      Samruddhi prime, Opposite to Indian oil Petrol Pump, Sant Nagar Wagholi road Lohegaon Pune 411047
+                      Samruddhi Prime, Wagholi Rd, Maria Udyan Area, Dadaji Vasti, Lohegaon, Pune, Maharashtra 411047
                       
                     </p>
                   </div>

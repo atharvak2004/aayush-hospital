@@ -5,9 +5,9 @@ import Image from "next/image";
 export default function ServicesHeroSection() {
   return (
     <section className="bg-[#f5f3ee] py-24 lg:py-32 overflow-hidden">
-      
+
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        
+
         <div
           className="
             grid
@@ -16,10 +16,10 @@ export default function ServicesHeroSection() {
             items-center
           "
         >
-          
+
           {/* LEFT CONTENT */}
           <div className="max-w-[520px]">
-            
+
             {/* Badge */}
             <div
               className="
@@ -52,7 +52,7 @@ export default function ServicesHeroSection() {
               "
             >
               Our Medical
-              <br /> 
+              <br />
               Services
             </h1>
 
@@ -74,7 +74,7 @@ export default function ServicesHeroSection() {
 
           {/* RIGHT IMAGE */}
           <div className="relative flex justify-center lg:justify-end">
-            
+
             {/* Main Image */}
             <div
               className="
@@ -92,6 +92,7 @@ export default function ServicesHeroSection() {
                 alt="Luxury Hospital Corridor"
                 fill
                 priority
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 520px"
                 className="object-cover"
               />
             </div>
@@ -112,7 +113,7 @@ export default function ServicesHeroSection() {
                 border-[#f0ece6]
               "
             >
-              
+
               {/* Quote */}
               <p
                 className="

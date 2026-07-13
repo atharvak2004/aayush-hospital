@@ -50,7 +50,7 @@ const departments = [
     desc: "Routine health screenings, wellness assessments, and preventive care for long-term health.",
   },
   {
-    image: "/Ozone Therapy.png",
+    image: "/OzoneInjection.png",
     title: "Ozone Treatments",
     large: true,
     desc: "Innovative ozone-based treatments designed to support healing, reduce inflammation, and improve recovery.",
@@ -151,6 +151,11 @@ export default function ClinicalDepartmentsSection() {
                   src={item.image}
                   alt={item.title}
                   fill
+                  sizes={
+                    item.large
+                      ? "(max-width: 640px) 100vw, (max-width: 768px) 50vw, 50vw"
+                      : "(max-width: 640px) 100vw, (max-width: 768px) 50vw, 25vw"
+                  }
                   className="object-cover transition-transform duration-500 hover:scale-105"
                 />
               </div>

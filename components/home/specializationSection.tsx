@@ -24,8 +24,8 @@ const specializations = [
     desc: "Advanced treatment for piles, fissures, fistulas, and colorectal conditions.",
   },
   {
-    image: "/Ozone Therapy.png",
-    title: "DSCB & Ozone Treatment",
+    image: "/OzoneInjection.png",
+    title: "DSCB & Ozone Treatments",
     desc: "Regenerative therapies that support healing and faster recovery.",
   },
   {
@@ -97,6 +97,7 @@ export default function SpecializationsSection() {
                   src={item.image}
                   alt={item.title}
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover transition-transform duration-500 hover:scale-105"
                 />
               </div>
