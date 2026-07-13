@@ -154,13 +154,10 @@ export default function AboutHeroSection() {
       shadow-xl
     "
             >
-              <Image
-                src="/Aayush_About_hero3.png"
-                alt="Luxury Hospital Interior"
-                fill
-                priority
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 60vw"
-                className="object-cover"
+              <img
+                src="/Aayush_About_hero2.png"
+                alt="test"
+                className="w-full h-full object-cover"
               />
             </div>
           </div>
