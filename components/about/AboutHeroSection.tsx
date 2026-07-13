@@ -155,7 +155,7 @@ export default function AboutHeroSection() {
     "
             >
               <img
-                src="/Aayush_About_hero2.png"
+                src="/aayushabout3.png"
                 alt="test"
                 className="w-full h-full object-cover"
               />
