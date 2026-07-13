@@ -12,6 +12,7 @@ import {
   Leaf,
   ShieldPlus,
   Accessibility,
+  CheckCircle2,
 } from "lucide-react";
 import Image from "next/image";
 
@@ -44,16 +45,22 @@ const departments = [
     desc: "Expert diagnosis and treatment of bone, joint, muscle, and ligament disorders.",
   },
   {
-    image: "/Ozone Therapy.png",
-    title: "Ozone Therapy",
-    desc: "Innovative ozone-based treatments designed to support healing, reduce inflammation, and improve recovery.",
-  },
-  {
     image: "/Preventive Healthcare.png",
     title: "Preventive Healthcare",
     desc: "Routine health screenings, wellness assessments, and preventive care for long-term health.",
-    large: true,
   },
+  {
+    image: "/Ozone Therapy.png",
+    title: "Ozone Treatments",
+    large: true,
+    desc: "Innovative ozone-based treatments designed to support healing, reduce inflammation, and improve recovery.",
+    points: [
+      { title: "EBOO Therapy", desc: "Ozonates blood outside the body" },
+      { title: "Local Ozone Infiltration", desc: "Targeted ozone injections for pain" },
+      { title: "Ozone Bagging", desc: "Ozone gas applied to limbs" },
+    ],
+  },
+
   {
     image: "/Non-Surgical Spine Recovery.png",
     title: "Advanced Non-Surgical Spine Recovery Program",
@@ -62,23 +69,21 @@ const departments = [
   },
 ];
 
-
 export default function ClinicalDepartmentsSection() {
   return (
-    <section className="bg-[#f5f3ee] py-24 overflow-hidden">
-
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-
+    <section className="bg-[#f5f3ee] py-14 sm:py-20 lg:py-24 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-10">
         {/* Header */}
-        <div className="mb-14">
-
+        <div className="mb-10 sm:mb-14">
           <h2
             className="
               text-(--brown-deep)
-              text-[52px]
+              text-[32px]
+              sm:text-[40px]
               md:text-[52px]
               leading-none
-              tracking-[-2px]
+              tracking-[-1px]
+              md:tracking-[-2px]
               font-bold
             "
           >
@@ -87,10 +92,13 @@ export default function ClinicalDepartmentsSection() {
 
           <p
             className="
-              mt-5
+              mt-4
+              sm:mt-5
               text-(--brown-soft)
-              text-md
-              leading-8
+              text-sm
+              sm:text-md
+              leading-7
+              sm:leading-8
             "
           >
             Expert care across specialized medical disciplines.
@@ -101,77 +109,148 @@ export default function ClinicalDepartmentsSection() {
         <div
           className="
             grid
+            grid-cols-1
+            sm:grid-cols-2
             md:grid-cols-12
-            gap-5
+            gap-4
+            sm:gap-5
           "
         >
-
-          {departments.map((item, index) => {
-            const Icon = item.icon;
-
-            return (
+          {departments.map((item, index) => (
+            <div
+              key={index}
+              className={`
+                bg-[#fbfaf8]
+                rounded-[20px]
+                sm:rounded-3xl
+                border
+                border-[#eee9e2]
+                p-5
+                sm:p-6
+                md:p-8
+                hover:-translate-y-1
+                transition-all
+                text-center
+                ${item.large ? "sm:col-span-2 md:col-span-6" : "md:col-span-3"}
+              `}
+            >
               <div
-                key={index}
-                className={`
-                  bg-[#fbfaf8]
-                  rounded-[24px]
-                  border
-                  border-[#eee9e2]
-                  p-8
-                  hover:-translate-y-1
-                  transition-all
-                  text-center
-                  ${item.large
-                    ? "md:col-span-6"
-                    : "md:col-span-3"
-                  }
-                `}
+                className="
+                  relative
+                  h-48
+                  sm:h-60
+                  md:h-72
+                  rounded-xl
+                  sm:rounded-2xl
+                  overflow-hidden
+                  mb-6
+                  sm:mb-8
+                "
               >
-
-                <div
-                  className={`
-        relative
-        h-72
-        rounded-2xl
-        overflow-hidden
-        mb-8
-    `}
-                >
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-cover transition-transform duration-500 hover:scale-105"
-                  />
-                </div>
-
-                {/* Title */}
-                <h3
-                  className="
-                    text-(--brown-deep)
-                    text-4xl
-                    leading-tight
-                    tracking-[-1px]
-                    font-semibold
-                  "
-                >
-                  {item.title}
-                </h3>
-
-                {/* Description */}
-                <p
-                  className="
-                    mt-5
-                    text-(--brown-soft)
-                    text-md
-                    leading-[1.9]
-                  "
-                >
-                  {item.desc}
-                </p>
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className="object-cover transition-transform duration-500 hover:scale-105"
+                />
               </div>
-            );
-          })}
+
+              {/* Title */}
+              <h3
+                className="
+                  text-(--brown-deep)
+                  text-xl
+                  sm:text-2xl
+                  md:text-4xl
+                  leading-tight
+                  tracking-[-0.5px]
+                  md:tracking-[-1px]
+                  font-semibold
+                "
+              >
+                {item.title}
+              </h3>
+
+              {/* Description */}
+              <p
+                className="
+                  mt-3
+                  sm:mt-4
+                  md:mt-5
+                  text-(--brown-soft)
+                  text-sm
+                  sm:text-md
+                  leading-[1.7]
+                  md:leading-[1.9]
+                "
+              >
+                {item.desc}
+              </p>
+
+              {/* Points */}
+              {item.points && item.points.length > 0 && (
+                <ul
+                  className="
+                    mt-4
+                    sm:mt-5
+                    flex
+                    flex-col
+                    gap-2
+                    sm:gap-2.5
+                    text-left
+                    max-w-md
+                    mx-auto
+                  "
+                >
+                  {item.points.map((point, i) => (
+                    <li
+                      key={i}
+                      className="
+                        flex
+                        items-start
+                        gap-2
+                      "
+                    >
+                      <CheckCircle2
+                        className="
+                          w-4
+                          h-4
+                          sm:w-5
+                          sm:h-5
+                          mt-0.5
+                          text-(--brown-deep)
+                          shrink-0
+                        "
+                      />
+                      <div>
+                        <p
+                          className="
+                            text-(--brown-deep)
+                            text-sm
+                            sm:text-md
+                            font-medium
+                            leading-relaxed
+                          "
+                        >
+                          {point.title}
+                        </p>
+                        <p
+                          className="
+                            text-(--brown-soft)
+                            text-xs
+                            sm:text-sm
+                            leading-relaxed
+                          "
+                        >
+                          {point.desc}
+                        </p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </section>

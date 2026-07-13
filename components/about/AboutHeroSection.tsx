@@ -18,7 +18,7 @@ export default function AboutHeroSection() {
         >
 
           {/* LEFT CONTENT */}
-          <div className="max-w-[520px]">
+          <div className="max-w-130">
 
             {/* Small Tag */}
             <div
@@ -143,7 +143,7 @@ export default function AboutHeroSection() {
           </div>
 
           {/* RIGHT IMAGE */}
-          <div className="relative w-full h-[300px] md:h-[500px] lg:h-[650px]">
+          <div className="relative w-full h-75 md:h-125 lg:h-162.5">
             <div
               className="
       relative
@@ -155,7 +155,7 @@ export default function AboutHeroSection() {
     "
             >
               <Image
-                src="/Aayush_About_Hero3.png"
+                src="/Aayush_About_hero2.png"
                 alt="Luxury Hospital Interior"
                 fill
                 priority
