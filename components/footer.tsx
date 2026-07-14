@@ -264,11 +264,16 @@ export default function Footer() {
 
           <div
             className="
-              flex
-              items-center
-              gap-6
-              flex-wrap
-            "
+    flex
+    flex-wrap
+    justify-center
+    md:justify-end
+    items-center
+    gap-x-5
+    gap-y-2
+    mt-2
+    md:mt-0
+  "
           >
             {[
               "Designed for Excellence",
@@ -277,12 +282,15 @@ export default function Footer() {
               <p
                 key={tag}
                 className="
-  uppercase
-  tracking-[3px]
-  text-[11px]
-  font-semibold
-  text-white/30
-"
+        uppercase
+        tracking-[2px]
+        sm:tracking-[3px]
+        text-[10px]
+        sm:text-[11px]
+        font-semibold
+        text-white/30
+        whitespace-nowrap
+      "
               >
                 {tag}
               </p>

@@ -32,9 +32,9 @@ const services = [
 
 export default function HeroSection() {
   return (
-    <section className="relative w-full min-h-screen overflow-hidden bg-[#b87b42]">
-      {/* BACKGROUND IMAGE */}
-      <div className="absolute inset-0">
+    <section className="relative w-full min-h-175 sm:min-h-195 min-[1170px]:min-h-screen overflow-hidden bg-[#B0937A] min-[1350px]:bg-[#b87b42]">
+      {/* BACKGROUND IMAGE - hidden below 1350px, shown from 1350px up */}
+      <div className="hidden min-[1350px]:block absolute inset-0">
         <Image
           src="/Aayush_Hero_Image9.png"
           alt="Hospital Interior"
@@ -49,7 +49,7 @@ export default function HeroSection() {
       </div>
 
       {/* MAIN WRAPPER */}
-      <div className="relative z-10 flex flex-col min-h-screen">
+      <div className="relative z-10 flex flex-col min-h-175 sm:min-h-195 min-[1170px]:min-h-screen ">
         {/* HERO CONTENT */}
         <div
           className="
@@ -60,30 +60,29 @@ export default function HeroSection() {
             sm:px-6
             md:px-10
             lg:px-0
-            pt-28
-            sm:pt-32
-            md:pt-36
-            pb-28
-            sm:pb-32
-            lg:max-w-[1280px]
-            lg:mx-auto
-            lg:w-full
+            py-20
+            sm:py-24
+            lg:pt-36
+            lg:pb-32
+            max-w-350
+            mx-auto
+            w-full
           "
         >
           {/* GLASS CARD */}
           <div
             className="
               w-full
-              max-w-full
-              sm:max-w-[620px]
-              lg:max-w-[780px]
-              bg-white/20
-              backdrop-blur-md
+              max-w-2xl
+              lg:max-w-3xl
+              bg-white/35
+              backdrop-blur-lg
               rounded-3xl
-              border border-white/20
-              shadow-2xl
-              p-6
-              sm:p-8
+              border border-white/40
+              shadow-[0_20px_60px_-15px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.5)]
+              mt-10
+              p-7
+              sm:p-9
               md:p-10
               lg:p-12
             "
@@ -91,9 +90,9 @@ export default function HeroSection() {
             {/* TOP TEXT */}
             <p
               className="
-                text-[28px]
-                sm:text-[34px]
-                md:text-[38px]
+                text-2xl
+                sm:text-3xl
+                md:text-4xl
                 font-light
                 text-[#4b2d25]
                 leading-none
@@ -112,29 +111,31 @@ export default function HeroSection() {
             {/* MAIN HEADING */}
             <h1
               className="
-                mt-4
-                text-[52px]
-                xs:text-[58px]
-                sm:text-[72px]
-                md:text-[82px]
-                lg:text-[76px]
-                leading-[0.9]
-                tracking-[-2px]
-                sm:tracking-[-3px]
-                text-(--brown-deep)
+                mt-3
+                text-5xl
+                sm:text-5xl
+                md:text-6xl
+                lg:text-6xl
+                xl:text-7xl
+                2xl:text-8xl
+                leading-[0.95]
+                sm:leading-[0.9]
+                tracking-[-1px]
+                sm:tracking-[-2px]
+                lg:tracking-[-3px]
               "
             >
               <span
-                className="font-semibold"
+                className="font-semibold text-(--brown-deep) whitespace-nowrap"
                 style={{ fontFamily: "var(--font-manrope)" }}
               >
-                Trusted Healthcare
+                Medical
               </span>
 
               <br />
 
               <span
-                className="font-light"
+                className="font-light text-(--brown-deep)"
                 style={{ fontFamily: "var(--font-playfair)" }}
               >
                 Excellence
@@ -145,11 +146,12 @@ export default function HeroSection() {
             <p
               className="
                 mt-6
-                text-[#5c463d]
-                text-[16px]
-                sm:text-[17px]
+                text-[#4a352c]
+                text-[15px]
+                sm:text-[16px]
+                lg:text-[17px]
                 leading-7
-                max-w-[540px]
+                max-w-xl
               "
             >
               Delivering compassionate and advanced medical
@@ -175,8 +177,11 @@ export default function HeroSection() {
                 className="
                   w-full
                   sm:w-auto
-                  min-w-[220px]
-                  lg:min-w-[320px]
+                  min-w-50
+                  lg:min-w-70
+                  h-12
+                  sm:h-14
+                  lg:h-16
                   inline-flex
                   items-center
                   justify-center
@@ -184,8 +189,9 @@ export default function HeroSection() {
                   bg-[#5a3a32]
                   hover:bg-[#4a2f29]
                   text-white
-                  px-8
-                  py-4
+                  px-6
+                  sm:px-8
+                  lg:px-10
                   rounded-full
                   text-[12px]
                   sm:text-[13px]
@@ -202,18 +208,22 @@ export default function HeroSection() {
               </a>
 
               {/* BUTTON 2 */}
-              <Link href="/services">
+              <Link href="/services" className="w-full sm:w-auto">
                 <button
                   className="
                     w-full
                     sm:w-auto
-                    min-w-[220px]
-                    lg:min-w-[320px]
+                    min-w-50
+                    lg:min-w-70
+                    h-12
+                    sm:h-14
+                    lg:h-16
                     bg-[#f2f0ed]
                     hover:bg-white
                     text-[#3f2a24]
-                    px-8
-                    py-4
+                    px-6
+                    sm:px-8
+                    lg:px-10
                     rounded-full
                     text-[12px]
                     sm:text-[13px]
@@ -243,9 +253,9 @@ export default function HeroSection() {
             lg:px-0
             pb-6
             sm:pb-10
-            lg:max-w-[1280px]
-            lg:mx-auto
-            lg:w-full
+            max-w-350
+            mx-auto
+            w-full
           "
         >
           <div
@@ -266,13 +276,15 @@ export default function HeroSection() {
                   bg-white/20
                     backdrop-blur-md
                     rounded-2xl
-                    h-[120px]
-                    sm:h-[135px]
+                    h-27.5
+                    sm:h-31.25
+                    lg:h-33.75
                     flex
                     flex-col
                     items-center
                     justify-center
-                    gap-4
+                    gap-3
+                    sm:gap-4
                     shadow-xl
                     hover:-translate-y-1
                     transition-all
@@ -282,18 +294,20 @@ export default function HeroSection() {
                   "
                 >
                   <Icon
-                    size={30}
+                    size={28}
                     strokeWidth={1.8}
-                    className="text-[#5a3a32]"
+                    className="text-[#5a3a32] sm:size-[30px]"
                   />
 
                   <p
                     className="
                       text-[#4b2d25]
-                      text-[15px]
-                      sm:text-[16px]
+                      text-[14px]
+                      sm:text-[15px]
+                      lg:text-[16px]
                       font-medium
                       text-center
+                      px-2
                     "
                   >
                     {service.label}
