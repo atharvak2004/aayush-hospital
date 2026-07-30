@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { CheckCircle2, X } from "lucide-react";
 import Image from "next/image";
-
+import { ArrowRight } from "lucide-react";
 const specializations = [
   {
     image: "/general mediciene.png",
@@ -267,91 +267,105 @@ function SpecializationModal({ item, onClose }: { item: any; onClose: () => void
       />
 
       {/* Modal card */}
+      {/* Modal card */}
       <div
         className="
-          relative
-          bg-[#faf9f7]
-          rounded-[24px]
-          border
-          border-[#ece7df]
-          w-full
-          max-w-2xl
-          max-h-[calc(100dvh-7rem)]
-          sm:max-h-[calc(100dvh-9rem)]
-          overflow-y-auto
-          p-4
-          sm:p-8
-          text-center
-          shadow-2xl
-        "
+    relative
+    bg-[#faf9f7]
+    rounded-[24px]
+    border
+    border-[#ece7df]
+    w-full
+    max-w-2xl
+    max-h-[calc(100dvh-7rem)]
+    sm:max-h-[calc(100dvh-9rem)]
+    shadow-2xl
+    overflow-hidden
+  "
       >
-        <button
-          onClick={onClose}
-          aria-label="Close"
+        {/* Scrollable Content */}
+        <div
           className="
-            absolute
-            top-3
-            right-3
-            sm:top-5
-            sm:right-5
-            w-8
-            h-8
-            sm:w-9
-            sm:h-9
-            flex
-            items-center
-            justify-center
-            rounded-full
-            bg-[#f3f1ec]
-            hover:bg-[#ece7df]
-            transition-colors
-            text-(--brown-deep)
-            z-10
-          "
+      h-full
+      max-h-[calc(100dvh-7rem)]
+      sm:max-h-[calc(100dvh-9rem)]
+      overflow-y-auto
+      p-4
+      sm:p-8
+      text-center
+      scrollbar-thin
+      scrollbar-thumb-[#b48d79]
+      scrollbar-track-transparent
+    "
         >
-          <X className="w-4 h-4 sm:w-5 sm:h-5" />
-        </button>
+          <button
+            onClick={onClose}
+            aria-label="Close"
+            className="
+        absolute
+        top-3
+        right-3
+        sm:top-5
+        sm:right-5
+        w-8
+        h-8
+        sm:w-9
+        sm:h-9
+        flex
+        items-center
+        justify-center
+        rounded-full
+        bg-[#f3f1ec]
+        hover:bg-[#ece7df]
+        transition-colors
+        text-(--brown-deep)
+        z-20
+      "
+          >
+            <X className="w-4 h-4 sm:w-5 sm:h-5  cursor-pointer" />
+          </button>
 
-        <div className="relative h-44 sm:h-64 md:h-80 rounded-2xl overflow-hidden mb-3 sm:mb-5">
-          <Image
-            src={item.image}
-            alt={item.title}
-            fill
-            sizes="(max-width: 640px) 100vw, 700px"
-            className="object-cover object-top"
-          />
+          <div className="relative h-44 sm:h-64 md:h-80 rounded-2xl overflow-hidden mb-3 sm:mb-5">
+            <Image
+              src={item.image}
+              alt={item.title}
+              fill
+              sizes="(max-width: 640px) 100vw, 700px"
+              className="object-cover object-top"
+            />
+          </div>
+
+          <h3
+            id="specialization-modal-title"
+            className="
+        text-xl
+        sm:text-2xl
+        md:text-3xl
+        leading-tight
+        tracking-[-1px]
+        text-(--brown-deep)
+        font-semibold
+      "
+          >
+            {item.title}
+          </h3>
+
+          <p
+            className="
+        mt-2
+        sm:mt-3
+        text-(--brown-soft)
+        text-sm
+        sm:text-md
+        leading-[1.6]
+        sm:leading-[1.8]
+      "
+          >
+            {item.desc}
+          </p>
+
+          <SpecializationPoints points={item.points} />
         </div>
-
-        <h3
-          id="specialization-modal-title"
-          className="
-            text-xl
-            sm:text-2xl
-            md:text-3xl
-            leading-tight
-            tracking-[-1px]
-            text-(--brown-deep)
-            font-semibold
-          "
-        >
-          {item.title}
-        </h3>
-
-        <p
-          className="
-            mt-2
-            sm:mt-3
-            text-(--brown-soft)
-            text-sm
-            sm:text-md
-            leading-[1.6]
-            sm:leading-[1.8]
-          "
-        >
-          {item.desc}
-        </p>
-
-        <SpecializationPoints points={item.points} />
       </div>
     </div>
   );
@@ -470,26 +484,29 @@ export default function SpecializationsSection() {
                 {item.desc}
               </p>
 
-              {/* More info indicator */}
               <span
                 className="
-                  mt-auto
-                  pt-4
-                  sm:pt-5
-                  inline-flex
-                  items-center
-                  justify-center
-                  gap-1.5
-                  text-(--brown-deep)
-                  text-xs
-                  sm:text-sm
-                  font-semibold
-                  uppercase
-                  tracking-[1.5px]
-                "
+    mt-auto
+    pt-4
+    sm:pt-5
+    inline-flex
+    items-center
+    justify-center
+    gap-2
+    text-(--brown-deep)
+    text-xs
+    sm:text-sm
+    font-semibold
+    uppercase
+    tracking-[1.5px]
+    group
+  "
               >
                 More Info
-                <span aria-hidden="true">&rarr;</span>
+                <ArrowRight
+                  size={18}
+                  className="transition-transform duration-300 group-hover:translate-x-1"
+                />
               </span>
             </button>
           ))}

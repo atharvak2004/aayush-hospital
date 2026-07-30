@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { CheckCircle2, X } from "lucide-react";
 import Image from "next/image";
-
+import { ArrowRight } from "lucide-react";
 const departments = [
   {
     image: "/general mediciene.png",
@@ -304,104 +304,119 @@ function DepartmentModal({ item, onClose }) {
       {/* Modal card */}
       <div
         className="
-          relative
-          bg-[#fbfaf8]
-          rounded-[20px]
-          sm:rounded-3xl
-          border
-          border-[#eee9e2]
-          w-full
-          max-w-2xl
-          max-h-[calc(100dvh-7rem)]
-          sm:max-h-[calc(100dvh-9rem)]
-          overflow-y-auto
-          p-4
-          sm:p-8
-          text-center
-          shadow-2xl
-          animate-[fadeIn_0.2s_ease-out]
-        "
+    relative
+    bg-[#fbfaf8]
+    rounded-[20px]
+    sm:rounded-3xl
+    border
+    border-[#eee9e2]
+    w-full
+    max-w-2xl
+    max-h-[calc(100dvh-7rem)]
+    sm:max-h-[calc(100dvh-9rem)]
+    overflow-hidden
+    shadow-2xl
+    animate-[fadeIn_0.2s_ease-out]
+  "
       >
+        {/* Close Button */}
         <button
           onClick={onClose}
           aria-label="Close"
           className="
-            absolute
-            top-3
-            right-3
-            sm:top-5
-            sm:right-5
-            w-8
-            h-8
-            sm:w-9
-            sm:h-9
-            flex
-            items-center
-            justify-center
-            rounded-full
-            bg-[#f5f3ee]
-            hover:bg-[#eee9e2]
-            transition-colors
-            text-(--brown-deep)
-            z-10
-          "
+      absolute
+      top-3
+      right-3
+      sm:top-5
+      sm:right-5
+      w-8
+      h-8
+      sm:w-9
+      sm:h-9
+      flex
+      items-center
+      justify-center
+      rounded-full
+      bg-[#f5f3ee]
+      hover:bg-[#eee9e2]
+      transition-colors
+      text-(--brown-deep)
+      z-20
+    "
         >
-          <X className="w-4 h-4 sm:w-5 sm:h-5" />
+          <X className="w-4 h-4 sm:w-5 sm:h-5 cursor-pointer" />
         </button>
 
+        {/* Scrollable Content */}
         <div
           className="
-            relative
-            h-44
-            sm:h-64
-            md:h-80
-            rounded-xl
-            sm:rounded-2xl
-            overflow-hidden
-            mb-3
-            sm:mb-5
-          "
+      h-full
+      max-h-[calc(100dvh-7rem)]
+      sm:max-h-[calc(100dvh-9rem)]
+      overflow-y-auto
+      p-4
+      sm:p-8
+      text-center
+      scrollbar-thin
+      scrollbar-thumb-[#b48d79]
+      scrollbar-track-transparent
+    "
+          style={{ scrollbarGutter: "stable" }}
         >
-          <Image
-            src={item.image}
-            alt={item.title}
-            fill
-            sizes="(max-width: 640px) 100vw, 700px"
-            className="object-cover object-top"
-          />
+          <div
+            className="
+        relative
+        h-44
+        sm:h-64
+        md:h-80
+        rounded-xl
+        sm:rounded-2xl
+        overflow-hidden
+        mb-3
+        sm:mb-5
+      "
+          >
+            <Image
+              src={item.image}
+              alt={item.title}
+              fill
+              sizes="(max-width: 640px) 100vw, 700px"
+              className="object-cover object-top"
+            />
+          </div>
+
+          <h3
+            id="department-modal-title"
+            className="
+        text-(--brown-deep)
+        text-xl
+        sm:text-2xl
+        md:text-3xl
+        leading-tight
+        tracking-[-0.5px]
+        md:tracking-[-1px]
+        font-semibold
+      "
+          >
+            {item.title}
+          </h3>
+
+          <p
+            className="
+        mt-2
+        sm:mt-3
+        text-(--brown-soft)
+        text-sm
+        sm:text-md
+        leading-[1.6]
+        sm:leading-[1.8]
+      "
+          >
+            {item.desc}
+          </p>
+
+          <DepartmentPoints points={item.points} />
         </div>
-
-        <h3
-          id="department-modal-title"
-          className="
-            text-(--brown-deep)
-            text-xl
-            sm:text-2xl
-            md:text-3xl
-            leading-tight
-            tracking-[-0.5px]
-            md:tracking-[-1px]
-            font-semibold
-          "
-        >
-          {item.title}
-        </h3>
-
-        <p
-          className="
-            mt-2
-            sm:mt-3
-            text-(--brown-soft)
-            text-sm
-            sm:text-md
-            leading-[1.6]
-            sm:leading-[1.8]
-          "
-        >
-          {item.desc}
-        </p>
-
-        <DepartmentPoints points={item.points} />
       </div>
     </div>
   );
@@ -542,29 +557,31 @@ export default function ClinicalDepartmentsSection() {
               </p>
 
               {/* More info indicator */}
+              {/* More info indicator */}
               <span
                 className="
-                  mt-auto
-                  pt-4
-                  sm:pt-5
-                  inline-flex
-                  items-center
-                  justify-center
-                  gap-1.5
-                  text-(--brown-deep)
-                  text-xs
-                  sm:text-sm
-                  font-semibold
-                  uppercase
-                  tracking-[1.5px]
-                "
+    mt-auto
+    pt-4
+    sm:pt-5
+    inline-flex
+    items-center
+    justify-center
+    gap-2
+    text-(--brown-deep)
+    text-xs
+    sm:text-sm
+    font-semibold
+    uppercase
+    tracking-[1.5px]
+    group
+  "
               >
                 More Info
-                <span aria-hidden="true">&rarr;</span>
+                <ArrowRight
+                  size={18}
+                  className="transition-transform duration-300 group-hover:translate-x-1"
+                />
               </span>
-
-              {/* Points preview on the card itself */}
-              {/* <DepartmentPoints points={item.points} /> */}
             </button>
           ))}
         </div>
