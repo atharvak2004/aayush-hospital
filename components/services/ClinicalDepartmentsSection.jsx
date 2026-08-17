@@ -122,7 +122,7 @@ const departments = [
     desc: "Expert diagnosis and treatment of bone, joint, muscle, and ligament disorders.",
   },
   {
-    image: "/Ayurveda & Homeopathy.png",
+    image: "/AyurvedaHomeopathy.png",
     title: "Ayurveda & Homeopathy",
     desc: "Medical management of all diseases using Ayurveda & Homeopathy."
   },
