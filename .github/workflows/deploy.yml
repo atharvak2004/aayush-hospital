@@ -1,0 +1,109 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      - server
+
+env:
+  NODE_VERSION: '20'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Build Next.js application
+        run: npm run build
+        env:
+          # Add any build-time env vars here if needed
+          NODE_ENV: production
+      
+      - name: Create build artifact
+        run: |
+          # Copy necessary files for deployment
+          mkdir -p deploy-package
+          cp -r .next deploy-package/
+          cp -r public deploy-package/ 2>/dev/null || true
+          cp -r node_modules deploy-package/
+          cp package.json deploy-package/
+          cp package-lock.json deploy-package/
+          cp next.config.ts deploy-package/ 2>/dev/null || true
+          tar -czf aayush-hospital-build.tar.gz deploy-package/
+      
+      - name: Setup SSH key with passphrase
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-key-passphrase: ${{ secrets.SSH_PASSPHRASE }}
+      
+      - name: Add server to known hosts
+        run: ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts 2>/dev/null || true
+      
+      - name: Transfer build to server
+        run: |
+          scp -P ${{ secrets.SSH_PORT }} \
+            aayush-hospital-build.tar.gz \
+            ${{ secrets.SSH_USER }}@${{ secrets.SERVER_HOST }}:/tmp/
+      
+      - name: Extract and restart service
+        run: |
+          ssh -p ${{ secrets.SSH_PORT }} \
+            ${{ secrets.SSH_USER }}@${{ secrets.SERVER_HOST }} << 'EOF'
+            
+            set -e
+            
+            cd /home/${{ secrets.SSH_USER }}/aayush-hospital
+            
+            # Backup current build
+            if [ -d ".next" ]; then
+              cp -r .next .next.backup
+            fi
+            
+            # Extract new build
+            cd /tmp
+            tar -xzf aayush-hospital-build.tar.gz
+            
+            # Copy files to application directory
+            cp -r deploy-package/.next /home/${{ secrets.SSH_USER }}/aayush-hospital/
+            cp -r deploy-package/public /home/${{ secrets.SSH_USER }}/aayush-hospital/ 2>/dev/null || true
+            cp deploy-package/package.json /home/${{ secrets.SSH_USER }}/aayush-hospital/
+            cp -r deploy-package/node_modules /home/${{ secrets.SSH_USER }}/aayush-hospital/
+            
+            # Restart service
+            sudo systemctl restart aayush.service
+            
+            # Wait for service to be ready
+            sleep 5
+            
+            # Verify service is running
+            sudo systemctl is-active aayush.service
+            
+            # Cleanup
+            rm -rf /tmp/deploy-package
+            rm /tmp/aayush-hospital-build.tar.gz
+            
+            echo "Deployment completed successfully"
+            EOF
+      
+      - name: Notify deployment status
+        if: always()
+        run: |
+          if [ $? -eq 0 ]; then
+            echo "✅ Deployment to server successful"
+          else
+            echo "❌ Deployment to server failed"
+            exit 1
+          fi
