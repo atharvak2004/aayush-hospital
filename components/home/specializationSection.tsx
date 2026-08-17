@@ -143,7 +143,7 @@ const specializations = [
     ],
   },
   {
-    image: "/Ayurveda & Homeopathy.png",
+    image: "/AyurvedaHomeopathy.png",
     title: "Ayurveda & Homeopathy",
     desc: "Natural and holistic treatments for long-term health and wellness.",
   },
