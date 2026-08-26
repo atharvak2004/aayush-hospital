@@ -9,7 +9,7 @@ import {
 
 const quickLinks = [
   "Home",
-  "Abohjhjhjkhjut Us",
+  "About Us",
   "Services",
   "Emergency Care",
 ];
