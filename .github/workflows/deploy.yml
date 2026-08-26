@@ -205,18 +205,6 @@ jobs:
 
           npm ci --omit=dev
 
-          # ----------------------------------
-          # Backup current .next
-          # ----------------------------------
-          if [ -d "$APP_DIR/.next" ]; then
-              echo ""
-              echo "Creating backup of current .next..."
-
-              rm -f "$APP_DIR/.next.backup.tar.gz"
-
-              tar -czf "$APP_DIR/.next.backup.tar.gz" \
-                  -C "$APP_DIR" .next
-          fi
 
           # ----------------------------------
           # Deploy new .next
