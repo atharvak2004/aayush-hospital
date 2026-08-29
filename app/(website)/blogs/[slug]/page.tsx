@@ -170,30 +170,6 @@ export default async function BlogPage({
           </div>
         </div>
 
-        {/* Hero Image */}
-        {blog.thumbnail && (
-          <div className="mt-14 flex justify-center">
-            <div
-              className="
-              relative
-              w-full
-              max-w-4xl
-              aspect-video
-              rounded-[30px]
-              overflow-hidden
-              shadow-xl
-            "
-            >
-              <Image
-                src={blog.thumbnail}
-                alt={blog.title}
-                fill
-                priority
-                className="object-cover"
-              />
-            </div>
-          </div>
-        )}
 
         {/* Content */}
         <div
