@@ -195,7 +195,7 @@ export default function ContactHeroSection() {
 
               {/* EMAIL */}
               <a
-                href="mailto:care@aayush.com"
+                href="mailto:aayushhospitalpune@gmail.com"
                 className="
     mt-6
     block
@@ -206,7 +206,7 @@ export default function ContactHeroSection() {
     hover:underline
   "
               >
-                care@aayush.com
+                aayushhospitalpune@gmail.com
               </a>
 
               <a
