@@ -139,9 +139,9 @@ export default function AayushAdvantageSection() {
                       <p
                         className="
                           text-white/65
-                          text-md
+                          text-[16px]
                           leading-8
-                          max-w-[500px]
+                          max-w-125
                         "
                       >
                         {item.desc}

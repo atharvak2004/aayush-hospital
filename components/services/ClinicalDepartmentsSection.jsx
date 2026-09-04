@@ -433,9 +433,7 @@ export default function ClinicalDepartmentsSection() {
           <h2
             className="
               text-(--brown-deep)
-              text-[32px]
-              sm:text-[40px]
-              md:text-[52px]
+              text-[52px]
               leading-none
               tracking-[-1px]
               md:tracking-[-2px]
@@ -450,7 +448,7 @@ export default function ClinicalDepartmentsSection() {
               mt-4
               sm:mt-5
               text-(--brown-soft)
-              text-sm
+              text-[16px]
               sm:text-md
               leading-7
               sm:leading-8
@@ -492,6 +490,7 @@ export default function ClinicalDepartmentsSection() {
                 flex
                 flex-col
                 w-full
+                min-w-0
                 focus:outline-none
                 focus-visible:ring-2
                 focus-visible:ring-(--brown-deep)
@@ -525,16 +524,21 @@ export default function ClinicalDepartmentsSection() {
               </div>
 
               {/* Title */}
+              {/* text-4xl only kicks in at lg — at md, cards (esp. md:col-span-3)
+                  are too narrow for 36px text and words like "Orthopaedics"
+                  or "Rehabilitation" were overflowing the card edge */}
               <h3
                 className="
                   text-(--brown-deep)
                   text-xl
                   sm:text-2xl
-                  md:text-4xl
+                  md:text-2xl
+                  lg:text-4xl
                   leading-tight
                   tracking-[-0.5px]
-                  md:tracking-[-1px]
+                  lg:tracking-[-1px]
                   font-semibold
+                  break-words
                 "
               >
                 {item.title}
@@ -550,7 +554,9 @@ export default function ClinicalDepartmentsSection() {
                   text-sm
                   sm:text-md
                   leading-[1.7]
-                  md:leading-[1.9]
+                  md:leading-[1.8]
+                  lg:leading-[1.9]
+                  break-words
                 "
               >
                 {item.desc}

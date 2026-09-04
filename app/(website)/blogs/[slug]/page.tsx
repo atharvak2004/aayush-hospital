@@ -22,6 +22,8 @@ interface Blog {
   image?: string;
 }
 
+const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+
 async function getBlog(slug: string): Promise<Blog | null> {
   try {
     const decodedSlug = decodeURIComponent(slug);
@@ -61,22 +63,47 @@ export async function generateMetadata({
   if (!blog) {
     return {
       title: "Blog Not Found",
+      // Don't let search engines index/crawl a 404 as if it were content.
+      robots: {
+        index: false,
+        follow: false,
+      },
     };
   }
 
+  const title = blog.meta_title || blog.title;
+  const description = blog.meta_description || blog.excerpt;
+  const url = `/blogs/${encodeURIComponent(blog.slug)}`;
+
   return {
-    title: blog.meta_title || blog.title,
-    description: blog.meta_description || blog.excerpt,
+    title,
+    description,
+    alternates: {
+      canonical: url,
+    },
     openGraph: {
-      title: blog.meta_title || blog.title,
-      description: blog.meta_description || blog.excerpt,
+      type: "article",
+      title,
+      description,
+      url,
+      publishedTime: blog.published_at,
+      authors: blog.author ? [blog.author] : undefined,
       images: blog.thumbnail
         ? [
           {
             url: blog.thumbnail,
+            width: 1200,
+            height: 630,
+            alt: blog.title,
           },
         ]
         : [],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: blog.thumbnail ? [blog.thumbnail] : undefined,
     },
   };
 }
@@ -94,8 +121,46 @@ export default async function BlogPage({
     notFound();
   }
 
+  // BlogPosting structured data — this is what lets the post show up with
+  // an author, published date, and image in Google's rich results.
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: blog.title,
+    description: blog.excerpt,
+    image: blog.thumbnail ? [blog.thumbnail] : undefined,
+    datePublished: blog.published_at,
+    dateModified: blog.created_at,
+    author: blog.author
+      ? {
+        "@type": "Person",
+        name: blog.author,
+      }
+      : {
+        "@type": "Organization",
+        name: "Aayush Hospital",
+      },
+    publisher: {
+      "@type": "Organization",
+      name: "Aayush Hospital",
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteUrl}/Aayush_logo.png`,
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${siteUrl}/blogs/${encodeURIComponent(blog.slug)}`,
+    },
+  };
+
   return (
     <main className="bg-[#f5f3ee] pt-32 pb-24">
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <div className="max-w-5xl mx-auto px-6">
 
         {/* Category */}

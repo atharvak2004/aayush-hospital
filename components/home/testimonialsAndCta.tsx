@@ -35,18 +35,22 @@ export default function TestimonialsSection() {
   const testimonial = testimonials[active];
 
   return (
-    <section className="bg-[#f4f2ed] py-32 overflow-hidden">
+    <section className="bg-[#f4f2ed] py-16 sm:py-24 lg:py-32 overflow-hidden">
 
-      <div className="max-w-5xl mx-auto px-6 text-center">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center">
 
         {/* Quote Icon */}
         <div
           className="
     text-[#d0a24a]
-    text-7xl
+    text-5xl
+    sm:text-6xl
+    lg:text-7xl
     leading-none
     font-serif
-    mb-10
+    mb-6
+    sm:mb-8
+    lg:mb-10
   "
         >
           &rdquo;
@@ -57,9 +61,14 @@ export default function TestimonialsSection() {
           key={active}
           className="
     text-(--brown-deep)
-    text-4xl
-    leading-[1.3]
-    tracking-[-1px]
+    text-2xl
+    sm:text-2xl
+    md:text-3xl
+    lg:text-4xl
+    leading-snug
+    sm:leading-[1.3]
+    tracking-[-0.5px]
+    sm:tracking-[-1px]
     font-light
     max-w-4xl
     mx-auto
@@ -70,16 +79,19 @@ export default function TestimonialsSection() {
         </blockquote>
 
         {/* User */}
-        <div className="mt-14 flex flex-col items-center">
+        <div className="mt-8 sm:mt-10 lg:mt-14 flex flex-col items-center">
 
           {/* Avatar */}
           <div
             className="
-              w-16
-              h-16
+              w-14
+              h-14
+              sm:w-16
+              sm:h-16
               rounded-full
               overflow-hidden
-              mb-5
+              mb-4
+              sm:mb-5
             "
           >
             {/* <img
@@ -93,7 +105,8 @@ export default function TestimonialsSection() {
           <h3
             className="
               text-(--brown-deep)
-              text-2xl
+              text-xl
+              sm:text-2xl
               font-semibold
             "
           >
@@ -105,8 +118,10 @@ export default function TestimonialsSection() {
             className="
               mt-1
               text-(--brown-soft)
-              text-[12px]
-              tracking-[3px]
+              text-[11px]
+              sm:text-[12px]
+              tracking-[2px]
+              sm:tracking-[3px]
               uppercase
               font-medium
             "
@@ -116,7 +131,7 @@ export default function TestimonialsSection() {
         </div>
 
         {/* Dots */}
-        <div className="flex justify-center gap-3 mt-10">
+        <div className="flex justify-center gap-3 mt-6 sm:mt-8 lg:mt-10">
 
           {testimonials.map((_, index) => (
             <button

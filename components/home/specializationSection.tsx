@@ -384,7 +384,7 @@ export default function SpecializationsSection() {
               uppercase
               tracking-[4px]
               text-(--eyebrow)
-              text-[14px]
+              text-[16px]
               font-semibold
               mb-5
             "

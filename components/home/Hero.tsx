@@ -59,7 +59,9 @@ export default function HeroSection() {
             px-4
             sm:px-6
             md:px-10
-            lg:px-0
+            lg:px-10
+            xl:px-16
+            2xl:px-16
             py-20
             sm:py-24
             lg:pt-36
@@ -250,7 +252,9 @@ export default function HeroSection() {
             px-4
             sm:px-6
             md:px-8
-            lg:px-0
+            lg:px-10
+            xl:px-16
+            2xl:px-20
             pb-6
             sm:pb-10
             max-w-350

@@ -32,10 +32,7 @@ export default function PatientJourneySection() {
           <h2
             className="
               text-(--brown-deep)
-              text-3xl
-              sm:text-4xl
-              md:text-5xl
-              lg:text-[52px]
+              text-[52px]
               leading-tight
               tracking-tight
               font-bold
@@ -47,7 +44,8 @@ export default function PatientJourneySection() {
 
         {/* Timeline */}
         <div className="relative">
-          {/* Desktop Line */}
+          {/* Connecting Line — only shown once the grid is a single row of 4
+              (from md up), so it stays aligned with the circle centers */}
           <div
             className="
               hidden
@@ -67,9 +65,10 @@ export default function PatientJourneySection() {
               grid
               grid-cols-1
               sm:grid-cols-2
-              lg:grid-cols-4
+              md:grid-cols-4
               gap-10
-              md:gap-8
+              sm:gap-8
+              md:gap-5
               lg:gap-6
               relative
               z-10
@@ -109,9 +108,10 @@ export default function PatientJourneySection() {
                   className="
                     mt-6
                     text-(--brown-deep)
-                    text-xl
+                    text-2xl
                     sm:text-2xl
-                    md:text-[28px]
+                    md:text-[22px]
+                    lg:text-[28px]
                     font-semibold
                     leading-tight
                   "
@@ -124,10 +124,14 @@ export default function PatientJourneySection() {
                   className="
                     mt-4
                     text-(--brown-soft)
-                    text-sm
+                    text-[16px]
                     sm:text-base
+                    md:text-sm
+                    lg:text-base
                     leading-7
                     max-w-[260px]
+                    md:max-w-[220px]
+                    lg:max-w-[260px]
                   "
                 >
                   {step.desc}

@@ -100,7 +100,8 @@ export default function Navbar() {
                         mx-auto
                         px-5
                         sm:px-6
-                        lg:px-10
+                        lg:px-8
+                        xl:px-10
                     "
                 >
                     <div
@@ -138,27 +139,31 @@ export default function Navbar() {
 
                             <h1
                                 className="
-      text-[20px]
-      sm:text-[22px]
-      lg:text-[26px]
+      text-[18px]
+      sm:text-[20px]
+      xl:text-[26px]
       font-bold
       tracking-[-1px]
       text-(--brown-deep)
       uppercase
       leading-none
+      whitespace-nowrap
     "
                             >
                                 AAYUSH HOSPITAL
                             </h1>
                         </Link>
 
-                        {/* DESKTOP NAV */}
+                        {/* DESKTOP NAV — switches on at xl (1280px), not lg,
+                            so small laptop widths (1024–1279px) still get the
+                            mobile drawer instead of a cramped/overlapping row */}
                         <div
                             className="
                                 hidden
-                                lg:flex
+                                xl:flex
                                 items-center
-                                gap-12
+                                gap-8
+                                2xl:gap-12
                             "
                         >
                             {navLinks.map((link) => {
@@ -172,10 +177,12 @@ export default function Navbar() {
                                         href={link.href}
                                         className={`
                                             relative
-                                            text-[14px]
+                                            text-[13px]
+                                            2xl:text-[14px]
                                             tracking-[1px]
                                             font-semibold
                                             pb-1
+                                            whitespace-nowrap
                                             transition-all
                                             duration-300
                                             ${isActive
@@ -207,7 +214,7 @@ export default function Navbar() {
                         </div>
 
                         {/* DESKTOP CTA */}
-                        <div className="hidden lg:block">
+                        <div className="hidden xl:block shrink-0">
                             <a
                                 href="https://wa.me/919970766313?text=Hello%20AAYUSH%20Hospital,%20I%20would%20like%20to%20book%20an%20appointment."
                                 target="_blank"
@@ -216,10 +223,13 @@ export default function Navbar() {
       bg-(--brown-deep)
       hover:opacity-90
       text-white
-      px-8
-      py-4
+      px-6
+      py-3
+      2xl:px-8
+      2xl:py-4
       rounded-full
-      text-[13px]
+      text-[12px]
+      2xl:text-[13px]
       tracking-[2px]
       font-semibold
       transition-all
@@ -229,19 +239,22 @@ export default function Navbar() {
       inline-flex
       items-center
       gap-2
+      whitespace-nowrap
     "
                             >
                                 <FaWhatsapp size={18} />
                                 BOOK APPOINTMENT
                             </a>
                         </div>
-                        {/* MOBILE TOGGLE */}
+                        {/* MOBILE / TABLET / SMALL-LAPTOP TOGGLE
+                            visible up to xl (was lg before — that's what
+                            broke on small laptop screens) */}
                         <button
                             type="button"
                             aria-label="Toggle Menu"
                             onPointerDown={toggleMenu}   // ✅ one event, works on both touch & mouse
                             className="
-        lg:hidden
+        xl:hidden
         absolute
         top-1/2
         right-0
@@ -335,7 +348,7 @@ export default function Navbar() {
                     z-99990
                     transition-all
                     duration-300
-                    lg:hidden
+                    xl:hidden
                     ${isMobileMenuOpen
                         ? 'opacity-100 visible pointer-events-auto'
                         : 'opacity-0 invisible pointer-events-none'
@@ -358,7 +371,7 @@ export default function Navbar() {
                     transition-transform
                     duration-500
                     ease-in-out
-                    lg:hidden
+                    xl:hidden
                     flex
                     flex-col
                     ${isMobileMenuOpen
