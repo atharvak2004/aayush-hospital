@@ -112,6 +112,18 @@ CREATE TABLE IF NOT EXISTS admins (
           ON DELETE CASCADE
       );
     `);
+    await connection.query(`
+  CREATE TABLE IF NOT EXISTS contacts (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+
+    name VARCHAR(150) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    phone VARCHAR(30),
+    message TEXT NOT NULL,
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  );
+`);
   } finally {
     connection.release();
   }
