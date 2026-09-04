@@ -2,10 +2,10 @@
 
 import Image from "next/image";
 import {
-  Asterisk,
-  Microscope,
-  ClipboardPlus,
-  Cross,
+  Bone,
+  Activity,
+  Pill,
+  Wind,
 } from "lucide-react";
 import Link from "next/link";
 import CountUp from "react-countup";
@@ -13,20 +13,20 @@ import { FaWhatsapp } from "react-icons/fa";
 
 const services = [
   {
-    icon: Asterisk,
-    label: "Emergency Care",
+    icon: Bone,
+    label: "Surgery and Orthopedics",
   },
   {
-    icon: Microscope,
-    label: "Diagnostics",
+    icon: Activity,
+    label: "Physiotherapy",
   },
   {
-    icon: ClipboardPlus,
-    label: "OPD Services",
+    icon: Pill,
+    label: "Pain Management",
   },
   {
-    icon: Cross,
-    label: "Hospitalization",
+    icon: Wind,
+    label: "Ozone Treatments",
   },
 ];
 

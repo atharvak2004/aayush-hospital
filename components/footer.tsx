@@ -329,7 +329,7 @@ export default function Footer() {
   duration-300
 "
             >
-              PRUSHAL TECH
+              PRUSHAL TECHNOLOGY PVT. LTD.
             </a>
           </p>
         </div>

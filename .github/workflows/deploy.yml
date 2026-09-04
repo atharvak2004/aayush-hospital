@@ -6,102 +6,306 @@ on:
       - server
 
 env:
-  NODE_VERSION: '20'
+  NODE_VERSION: '24'
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
+      # ==============================
+      # Checkout
+      # ==============================
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
+      # ==============================
+      # Setup Node.js
+      # ==============================
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
-      
+
+      # ==============================
+      # Install dependencies
+      # ==============================
       - name: Install dependencies
         run: npm ci
-      
+
+      # ==============================
+      # Build Next.js application
+      # ==============================
       - name: Build Next.js application
         run: npm run build
         env:
-          # Add any build-time env vars here if needed
           NODE_ENV: production
-      
+
+      # ==============================
+      # Create deployment package
+      # ==============================
       - name: Create build artifact
         run: |
-          # Copy necessary files for deployment
+          set -e
+
+          echo "Creating deployment package..."
+
+          rm -rf deploy-package
           mkdir -p deploy-package
+
+          # Next.js build
           cp -r .next deploy-package/
-          cp -r public deploy-package/ 2>/dev/null || true
-          cp -r node_modules deploy-package/
+
+          # Public files
+          if [ -d "public" ]; then
+            cp -r public deploy-package/
+          fi
+
+          # Package files
           cp package.json deploy-package/
           cp package-lock.json deploy-package/
-          cp next.config.ts deploy-package/ 2>/dev/null || true
+
+          # Next.js config
+          if [ -f "next.config.ts" ]; then
+            cp next.config.ts deploy-package/
+          elif [ -f "next.config.js" ]; then
+            cp next.config.js deploy-package/
+          elif [ -f "next.config.mjs" ]; then
+            cp next.config.mjs deploy-package/
+          fi
+
+          # Create tarball
           tar -czf aayush-hospital-build.tar.gz deploy-package/
-      
-      - name: Setup SSH key with passphrase
+
+          echo "Deployment package created:"
+          ls -lh aayush-hospital-build.tar.gz
+
+          echo "Package contents:"
+          tar -tzf aayush-hospital-build.tar.gz | head -50
+
+      # ==============================
+      # Setup SSH
+      # ==============================
+      - name: Setup SSH key
         uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          ssh-key-passphrase: ${{ secrets.SSH_PASSPHRASE }}
-      
+
+      # ==============================
+      # Add server to known hosts
+      # ==============================
       - name: Add server to known hosts
-        run: ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts 2>/dev/null || true
-      
+        run: |
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+
+          ssh-keyscan -p ${{ secrets.SSH_PORT }} \
+            -H ${{ secrets.SERVER_HOST }} \
+            >> ~/.ssh/known_hosts
+
+          chmod 644 ~/.ssh/known_hosts
+
+      # ==============================
+      # Transfer build
+      # ==============================
       - name: Transfer build to server
         run: |
           scp -P ${{ secrets.SSH_PORT }} \
             aayush-hospital-build.tar.gz \
             ${{ secrets.SSH_USER }}@${{ secrets.SERVER_HOST }}:/tmp/
-      
+
+      # ==============================
+      # Deploy and restart service
+      # ==============================
       - name: Extract and restart service
         run: |
           ssh -p ${{ secrets.SSH_PORT }} \
             ${{ secrets.SSH_USER }}@${{ secrets.SERVER_HOST }} << 'EOF'
-            
-            set -e
-            
-            cd /home/${{ secrets.SSH_USER }}/aayush-hospital
-            
-            # Backup current build
-            if [ -d ".next" ]; then
-              cp -r .next .next.backup
-            fi
-            
-            # Extract new build
-            cd /tmp
-            tar -xzf aayush-hospital-build.tar.gz
-            
-            # Copy files to application directory
-            cp -r deploy-package/.next /home/${{ secrets.SSH_USER }}/aayush-hospital/
-            cp -r deploy-package/public /home/${{ secrets.SSH_USER }}/aayush-hospital/ 2>/dev/null || true
-            cp deploy-package/package.json /home/${{ secrets.SSH_USER }}/aayush-hospital/
-            cp -r deploy-package/node_modules /home/${{ secrets.SSH_USER }}/aayush-hospital/
-            
-            # Restart service
-            sudo systemctl restart aayush.service
-            
-            # Wait for service to be ready
-            sleep 5
-            
-            # Verify service is running
-            sudo systemctl is-active aayush.service
-            
-            # Cleanup
-            rm -rf /tmp/deploy-package
-            rm /tmp/aayush-hospital-build.tar.gz
-            
-            echo "Deployment completed successfully"
-            EOF
-      
+
+          set -e
+
+          APP_DIR="/home/${{ secrets.SSH_USER }}/aayush-hospital"
+          DEPLOY_DIR="/tmp/deploy-package"
+
+          echo "========================================="
+          echo "Starting deployment"
+          echo "========================================="
+
+          echo "Application directory: $APP_DIR"
+
+          # ----------------------------------
+          # Check disk space
+          # ----------------------------------
+          echo ""
+          echo "Disk usage before deployment:"
+          df -h /
+
+          # ----------------------------------
+          # Extract deployment package
+          # ----------------------------------
+          echo ""
+          echo "Extracting deployment package..."
+
+          cd /tmp
+
+          rm -rf "$DEPLOY_DIR"
+
+          tar -xzf aayush-hospital-build.tar.gz
+
+          # ----------------------------------
+          # Load NVM
+          # ----------------------------------
+          echo ""
+          echo "Loading Node.js environment..."
+
+          export NVM_DIR="$HOME/.nvm"
+
+          if [ -s "$NVM_DIR/nvm.sh" ]; then
+              source "$NVM_DIR/nvm.sh"
+          else
+              echo "❌ NVM not found at $NVM_DIR"
+              exit 1
+          fi
+
+          # ----------------------------------
+          # Verify Node.js
+          # ----------------------------------
+          echo ""
+          echo "Node version:"
+          node -v
+
+          echo "NPM version:"
+          npm -v
+
+          # ----------------------------------
+          # Deploy package files
+          # ----------------------------------
+          echo ""
+          echo "Deploying package files..."
+
+          cp "$DEPLOY_DIR/package.json" "$APP_DIR/"
+          cp "$DEPLOY_DIR/package-lock.json" "$APP_DIR/"
+
+          if [ -f "$DEPLOY_DIR/next.config.ts" ]; then
+              cp "$DEPLOY_DIR/next.config.ts" "$APP_DIR/"
+          elif [ -f "$DEPLOY_DIR/next.config.js" ]; then
+              cp "$DEPLOY_DIR/next.config.js" "$APP_DIR/"
+          elif [ -f "$DEPLOY_DIR/next.config.mjs" ]; then
+              cp "$DEPLOY_DIR/next.config.mjs" "$APP_DIR/"
+          fi
+
+          # ----------------------------------
+          # Install production dependencies
+          # ----------------------------------
+          echo ""
+          echo "Installing production dependencies..."
+
+          cd "$APP_DIR"
+
+          npm ci --omit=dev
+
+
+          # ----------------------------------
+          # Deploy new .next
+          # ----------------------------------
+          echo ""
+          echo "Deploying new .next..."
+
+          rm -rf "$APP_DIR/.next"
+
+          cp -r "$DEPLOY_DIR/.next" "$APP_DIR/"
+
+          # ----------------------------------
+          # Deploy public
+          # ----------------------------------
+          if [ -d "$DEPLOY_DIR/public" ]; then
+              echo ""
+              echo "Deploying public directory..."
+
+              rm -rf "$APP_DIR/public"
+
+              cp -r "$DEPLOY_DIR/public" "$APP_DIR/"
+          fi
+
+          # ----------------------------------
+          # Restart application
+          # ----------------------------------
+          echo ""
+          echo "Restarting aayush.service..."
+
+          sudo systemctl restart aayush.service
+
+          # ----------------------------------
+          # Wait for application
+          # ----------------------------------
+          echo ""
+          echo "Waiting for application..."
+
+          sleep 5
+
+          # ----------------------------------
+          # Verify service
+          # ----------------------------------
+          echo ""
+          echo "Checking service status..."
+
+          if sudo systemctl is-active --quiet aayush.service; then
+
+              echo "========================================="
+              echo "✅ aayush.service is running"
+              echo "========================================="
+
+          else
+
+              echo "========================================="
+              echo "❌ aayush.service failed"
+              echo "========================================="
+
+              sudo systemctl status \
+                  aayush.service \
+                  --no-pager || true
+
+              echo ""
+              echo "Recent logs:"
+
+              sudo journalctl \
+                  -u aayush.service \
+                  -n 50 \
+                  --no-pager || true
+
+              exit 1
+          fi
+
+          # ----------------------------------
+          # Cleanup
+          # ----------------------------------
+          echo ""
+          echo "Cleaning temporary files..."
+
+          rm -rf "$DEPLOY_DIR"
+          rm -f /tmp/aayush-hospital-build.tar.gz
+
+          # ----------------------------------
+          # Disk usage
+          # ----------------------------------
+          echo ""
+          echo "Disk usage after deployment:"
+          df -h /
+
+          echo ""
+          echo "========================================="
+          echo "✅ Deployment completed successfully"
+          echo "========================================="
+
+          EOF
+      # ==============================
+      # Deployment status
+      # ==============================
       - name: Notify deployment status
         if: always()
         run: |
-          if [ $? -eq 0 ]; then
+          if [ "${{ job.status }}" = "success" ]; then
             echo "✅ Deployment to server successful"
           else
             echo "❌ Deployment to server failed"
